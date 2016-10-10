@@ -213,6 +213,7 @@ registerForm.onsubmit=function(){
 
 */
 
+/*
 //用策略模式构建
 var strategies={
 	isNonEmpty:function(value,errorMsg){
@@ -234,23 +235,23 @@ var strategies={
 
 //validator类的实现
 var Validator=function(){
-	this.cache=[];
+	this.cache=[];  //保存校验规则
 }
 
 Validator.prototype.add=function(dom,rule,errorMsg){
-	var ary=rule.split(':');
-	this.cache.push(function(){
-		var strategy=ary.shift();
-		ary.unshift(dom.value);
-		ary.push(errorMsg);
-		return strategies[strategy].apply(dom,ary);
+	var ary=rule.split(':');     //将strategy和参数分开  'minLength:6'
+	this.cache.push(function(){     //把校验的步骤用空函数包装起来，并且放入cache
+		var strategy=ary.shift();	//shift删除并返回第一个元素  用户挑选的strategy
+		ary.unshift(dom.value);		//unshift在数组头部添加一个元素  把input的value添加进参数列表
+		ary.push(errorMsg);		//将errorMsg添加进参数列表
+		return strategies[strategy].apply(dom,ary);      //闭包里面的this指向window
 	})
 }
 
 Validator.prototype.start=function(){
 	for(var i=0,validatorFunc;validatorFunc=this.cache[i++];){
-		var msg=validatorFunc();
-		if(msg){
+		var msg=validatorFunc(); //开始校正，并取得校验后的返回信息
+		if(msg){ //如果有返回值，说明校验没有成功
 			return msg;
 		}
 	}
@@ -264,25 +265,111 @@ var validataFunc=function(){
 	validator.add(registerForm.passWord,'minLength:6','密码长度不能少于6位');
 	validator.add(registerForm.phoneNumber,'isMobile','手机号码必须符合格式');
 	
-	var errorMsg=validator.start();
-	return errorMsg;	
+	var errorMsg=validator.start();  //获得校验结果
+	
+	return errorMsg;	 //返回
 }
 
 var registerForm=document.getElementById('registerForm');
 registerForm.onsubmit=function(){
-	var errorMsg=validataFunc();
+	var errorMsg=validataFunc();  //如果有返回值，说明校验没有成功
 	if(errorMsg){
 		alert(errorMsg);
-		return false;
+		return false; //阻止表单提交
+	}
+}
+*/
+
+//实现给文本框添加多种验证规则
+
+/* ********策略对象*********** */
+var strategies={
+	isNonEmpty:function(value,errorMsg){
+		if(value===''){
+			return errorMsg;
+		}
+	},
+	minLength:function(value,length,errorMsg){
+		if(value.length<=length){
+			return errorMsg;
+		}
+	},
+	isMobile:function(value,errorMsg){
+		if(!/^1[3|5}8][0-9]{9}$/.test(value)){
+			return errorMsg;
+		}
+	}
+};
+
+/* ********validator类*********** */
+var Validator=function(){
+	this.cache=[];  //保存校验规则
+}
+
+Validator.prototype.add=function(dom,rules){
+	var self=this;
+	for(var i=0,rule;rule=rules[i++];){
+		(function(rule){
+			var strategyAry=rule.strategy.split(':');
+			var errorMsg=rule.errorMsg;
+			
+			self.cache.push(function(){
+				var strategy=strategyAry.shift();
+				strategyAry.unshift(dom.value);
+				strategyAry.push(errorMsg);
+				return strategies[strategy].apply(dom,strategyAry);
+			});
+		})(rule);
+	}
+	
+}
+
+Validator.prototype.start=function(){
+	for(var i=0,validatorFunc;validatorFunc=this.cache[i++];){
+		var msg=validatorFunc(); //开始校正，并取得校验后的返回信息
+		if(msg){ //如果有返回值，说明校验没有成功
+			return msg;
+		}
 	}
 }
 
+/* ********客户调用代码*********** */
+var validataFunc=function(){
+	var validator=new Validator();
+	
+	validator.add(registerForm.userName,[{
+		strategy:'isNonEmpty',
+		errorMsg:'用户名不能为空'
+	},{
+		strategy:'minLength:6',
+		errorMsg:'用户名长度不能小于6位'
+	}]);
+	
+	validator.add(registerForm.passWord,[{
+		strategy:'isNonEmpty',
+		errorMsg:'请输入密码'
+	},{
+		strategy:'minLength:6',
+		errorMsg:'密码长度不能小于6位'
+	}]);
+	
+	validator.add(registerForm.phoneNumber,[{
+		strategy:'isMobile',
+		errorMsg:'手机号码必须符合格式'
+	}])
+	
+	var errorMsg=validator.start();  //获得校验结果
+	
+	return errorMsg;	 //返回
+}
 
-
-
-
-
-
-
+var registerForm=document.getElementById('registerForm');
+registerForm.onsubmit=function(){
+	var errorMsg=validataFunc();  //如果有返回值，说明校验没有成功
+	if(errorMsg){
+		alert(errorMsg);
+		return false; //阻止表单提交
+	}
+}
 
 
