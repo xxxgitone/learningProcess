@@ -64,3 +64,70 @@
 			return b-a;     
 		}));
 		//输出4,3,1
+
+##2.函数作为返回值输出
+
+* 判断数据类型
+
+		var isString=function(obj){
+			return Object.prototype.toString.call(obj)==='[object String]';
+		}
+		
+		var isArray=function(obj){
+			return Object.prototype.toString.call(obj)==='[object Array]';
+		}
+		
+		var isNumber=function(obj){
+			return Object.prototype.toString.call(obj)==='[object Number]';
+		}
+		
+		console.log(isString('ff'));
+
+	这段函数大部分实现都是相同的，改写
+
+		var isType=function(type){
+			return function(obj){
+				return Object.prototype.toString.call(obj)==='[object '+type+']';
+			}
+		}
+		
+		var isString=isType('String');
+		var isArray=isType('Array');
+		var isNumber=isType('Number');
+		
+		console.log(isString('ff'));
+
+	使用循环批量注册
+
+		var Type={};
+		
+		for(var i=0,type;type=['String','Array','Number'][i++];){
+			(function(type){
+				Type['is'+type]=function(obj){
+					return Object.prototype.toString.call(obj)==='[object '+type+']';
+				}
+			})(type);
+		}
+		
+		alert(Type.isArray([]));
+		alert(Type.isString('str'));
+
+* getSingle
+
+		var getSingle=function(fn){
+			var ret;
+			return function(){
+				return ret || (ret=fn.apply(this,arguments));
+			}
+		}
+		
+		var getSingle=getSingle(function(){
+			return document.createElement('script');
+		})
+		
+		var script1=getSingle();
+		var script2=getSingle();
+		
+		alert(script1===script2); //true
+
+	这个高阶函数的例子，既把函数当作参数传递，又让函数执行后返回了另一个函数
