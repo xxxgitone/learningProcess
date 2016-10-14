@@ -5,24 +5,35 @@
 ####视频
 
 * 李炎恢HTML5第一季
+* 慕课网
 
 ####书籍
 * HTML5与CSS3权威指南
 
 
 ##2.CSS
-####视频
-* 李炎恢HTML5第一季
+> **视频**
 
-####书籍
+
+* 李炎恢HTML5第一季
+* 慕课网
+
+> **书籍**
+
+
 * HTML5与CSS3权威指南
 
 ##3.JavaScript
-####视频
+> **视频**
+
+
 * 李炎恢JavaScript第一季
 * 慕课网JavaScript深入浅出
+* 慕课网
 
-####书籍
+> **书籍**
+
+
 * JavaScript DOM 编程艺术
 * JavaScript 高级程序设计(第三版)
 * 高性能的JavaScript
@@ -30,15 +41,23 @@
 * JavaScript开发模式与开发实践
 
 ##4.jQuery
-####视频
-* 李炎恢jQuery 、jquery UI 、jquery easyui
+> **视频**
 
-####书籍
+
+* 李炎恢jQuery 、jquery UI 、jquery easyui
+* 慕课网
+
+> **书籍**
+
+
 * 锋利的jQuery
 
 ##5.BootStrap
-####视频
+> **视频**
+
+
 * 李炎恢Bootstrap
+* 慕课网
 
 
 
