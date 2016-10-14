@@ -254,7 +254,7 @@ var setCommand=function(command){
 setCommand(new OpenTvCommand(Tv));
 */
 
-
+//命令模式
 var Tv={
 	open:function(){
 		console.log('打开电视机');
