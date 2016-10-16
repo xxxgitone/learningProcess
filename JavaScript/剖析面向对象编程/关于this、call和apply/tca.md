@@ -60,7 +60,7 @@
 			callback();
 		}
 
-	一种接单的解决方法，将this保存起来
+	一种简单的解决方法，将this保存起来
 
 		document.getElementById('div1').onclick=function(){
 			var that=this;  //保存div的引用
@@ -164,3 +164,94 @@
 
 
 	Function.prototype.call和Function.prototype.apply方法作用一样，区别在于传参数不一样
+
+	> apply接受两个参数，第一个参数指定了函数体内this对象的指向，第二个参数为一个带下标的集合，这个集合可以是数组，也可以是类数组，apply方法把这个集合中的元素作为参数传递给被调用的函数
+
+		var func=function(a,b,c){
+			alert([a,b,c]);  //1,2,3
+		}
+		
+		func.apply(null,[1,2,3]);
+
+	这段代码，参数1,2,3被放在一个数组中一起传入func函数，它们分别对应func参数列表中的a，b，c
+
+	> call传入的参数数量不固定，跟apply相同的是，第一参数也是代表函数体内this的指向，从第二个参数开始往后，每个参数一次传递
+
+		var func=function(a,b,c){
+			alert([a,b,c]);  //1,2,3
+		}
+		
+		func.call(this,1,2,3);
+
+	> 当使用call和apply的时候，如果我们传入的第一个参数为null，函数体内的this会指向默认的宿主对象，在浏览器则是window
+
+		var func=function(a,b,c){
+			alert(this);   //[object Window]
+		}
+		
+		func.apply(null,[1,2,3]);
+
+	但如果在ECMAScript5的严格模式下，一个普通函数里的this为undefined，这里函数体内的this仍然为null
+
+		var func=function(a,b,c){
+			"use strict"
+			alert(this);   //null
+			
+		}
+		
+		func.apply(null,[1,2,3]);
+
+	> 有时候我们使用call和apply并不在意this的指向，而是另有用途，比如借用其他对象的方法。
+
+		Math.max.apply(null,[1,2,3,4,5]) //5
+
+* call和apply的用途
+	> 改变this指向，最常见的
+
+		var obj1={
+			name:'jiang',
+		};
+		
+		var obj2={
+			name:'zhi',
+		};
+		
+		window.name='window';
+		
+		var getName=function(){
+			alert(this.name);
+		}
+		
+		getName();    //window
+		getName.call(obj1);   //jiang     这里相当于alert(obj1.name);
+		getName.call(obj2);    //zhi
+
+	假如一个div节点，div节点的onclick事件中的this本来指向这个的div
+
+		document.getElementById('div1').onclick=function(){
+			alert(this.id);  //div1
+		}
+
+	假如该事件函数中有一个内部函数func，在事件内部调用func时，func函数中的this指向的是window
+
+		document.getElementById('div1').onclick=function(){
+			alert(this.id);  //div1
+			var func=function(){
+				alert(this.id)  //undefined
+			}
+			func();
+		}
+
+	使用call修改
+
+		document.getElementById('div1').onclick=function(){
+			var func=function(){
+				alert(this.id)  //div1
+			}
+			func.call(this);
+		}
+
+	> Function.prototype.bind 大部分浏览器都实现了内置的这个方法，用来指定函数内this指向，可以模拟此函数
+
+
+
