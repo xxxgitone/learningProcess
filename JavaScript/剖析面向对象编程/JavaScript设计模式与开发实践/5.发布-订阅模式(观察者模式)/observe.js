@@ -241,3 +241,135 @@ salesOffices.remove('squareMeter88',fn1);   //取消小明的
 salesOffices.trigger('squareMeter110',3000000);  //
 */
 
+
+//真实的例子-网站登录
+//假如一个商城网站，必须先用ajax异步请求获取用户的登录信息，然后渲染header模块、nav模块、消息列表模块等
+/*
+$.ajax('http://xxx.com?login',function(data)){  //登录成功
+	login.trigger('loginSucc',data);	//发布登录成功的消息
+}
+
+//各个模块监听登录成功的消息
+
+var header=(function(){ //header模块
+	login.listen('loginSucc',function(data){
+		header.setAvatar(data.avatar);
+	})
+	return {
+		setAvatar:function(data){
+			console.log('设置header模块头像');
+		}
+	}
+	
+})();
+
+var nav=(function(){  //nav模块
+	login.listen('loginSucc',function(data){
+		header.setAvatar(data.avatar);
+	})
+	return {
+		setAvatar:function(data){
+			console.log('设置nav模块头像');
+		}
+	}
+	
+})();
+
+var address=(function(){    //nav模块
+	login.listen('loginSucc',function(obj){
+		address.refresh(obj);
+	})
+	return {
+		refresh:function(avatar){
+			console.log('刷新收货地址列表');
+		}
+	}
+	
+})();
+*/
+
+//全局的发布-订阅对象
+
+var Event=(function(){
+	
+	var clientList={},
+		listen,
+		trigger,
+		remove;
+		
+	listen=function(key,fn){ 
+		if(!clientList[key]){
+			clientList[key]=[];  // 如果没有订阅过此类消息，给该类消息创建一个缓存列表
+		}
+		clientList[key].push(fn);      //订阅者的信息添加进缓存列表
+	}
+	
+	trigger=function(){    //发布消息
+		var key=Array.prototype.shift.call(arguments);  //取出消息类型
+			fns=clientList[key];
+			
+		if(!fns || fns.length===0){   //如果没有该消息，则返回
+			return false;
+		}
+		
+		for(var i=0,fn;fn=fns[i++];){
+			fn.apply(this,arguments);    //  arguments是发布消息带上的参数
+		}
+	};
+	
+	remove=function(key,fn){
+		var fns=clientList[key];
+		
+		if(!fns){          //如果key对应的函数没有被订阅，则直接返回
+			return false;
+		}
+		
+		if(!fn){   //如果没有传入具体的回调函数，表示需要取消key对应的所有订阅
+			fns&&(fns.length=0);
+		}else{
+			for(var l=fns.length-1;l>=0;l--){//反向遍历
+				var _fn=fns[l];
+				if(_fn===fn){
+					fns.splice[l,1];  //删除订阅者的回调函数
+				}
+			}
+		}
+	}
+	
+	return{
+		listen:listen,
+		trigger:trigger,
+		remove:remove
+	}
+		
+})();
+
+// Event.listen('squareMeter88',function(price){
+	// console.log('价格='+price);
+// });
+
+// Event.trigger('squareMeter88',2000000);
+
+
+//模块间的通信，a模块有一个按钮，每次点击后，b模块里的div显示点击的次数
+
+var a=(function(){
+	var count=0;
+	var button=document.getElementById('count');
+	button.onclick=function(){
+		Event.trigger('add',count++);
+	}
+})();
+
+var b=(function(){
+	var div=document.getElementById('show');
+	Event.listen('add',function(count){
+		div.innerHTML=count;
+	})
+})();
+
+
+
+
+
+
