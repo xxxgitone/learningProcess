@@ -1,0 +1,239 @@
+@charset "utf-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+}
+.none{
+	display: none;
+}
+#header{
+	width: 100%;
+	min-width: 1263px;
+	height: 70px;
+	background-color: #333;
+}
+
+#header .center{
+	width: 1263px;
+	height:70px;
+	margin: 0 auto;
+}
+
+#header .logo{
+	width: 240px;
+	height: 70px;
+	background: url(../img/logo.png);
+	text-indent: -9999px; /* 隐藏字*/
+	float: left;
+}
+#header .link{
+	width: 650px;
+	float: right;
+	height: 70px;
+	line-height: 70px;
+	color: #eee;
+}
+#header .link li{
+	width: 120px;
+	text-align: center;
+	float: left;
+}
+
+#header .link a{
+	color: #eee;
+	display: block;
+}
+
+#header .link a:hover,
+#header .active a{
+	background-color: #000;
+}
+
+#search{
+	width: 100%;
+	min-width: 1263px;
+	height: 600px;
+	background: url(../img/search.jpg) no-repeat center;
+	position: relative;
+}
+
+#search .center{
+	width: 600px;
+	height: 60px;
+	background-color: #000;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -30px 0 0 -300px;
+	opacity: 0.6;
+	border-radius: 10px;
+}
+#search .search{
+	width: 446px;
+	height: 52px;
+	background-color: #eee;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -27px 0 0 -296px;
+	color: #666;
+	border:1px solid #666;
+	border-radius: 10px;
+	font-size: 24px;
+	padding: 0 10px;
+	outline: none;  /*浏览器点击产生的边框效果*/
+}
+
+#search .button{
+	width: 120px;
+	height: 54px;
+	background-color: #eee;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -27px 0 0 175px;
+	color: #666;
+	border:1px solid #666;
+	border-radius: 10px;
+	font-size: 24px;
+	outline: none;  
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#tour{
+	width: 1263px;
+	height: 1150px;
+	margin: 30 auto;
+/*	background-color: #eee;*/
+	text-align: center;
+}
+#tour .center h2{
+	font-size: 45px;
+	color: #666;
+	letter-spacing: 2px;
+	margin: 10px 0;
+}
+#tour .center p{
+	color: #666;
+	margin: 10px 0;
+}
+#tour figure{
+	border:1px solid #ddd;
+	display: inline-block;
+	padding: 4px;
+	border-radius: 4px;
+	margin: 15px 12px;
+	width: 380px;
+	text-align: left;
+	position: relative;
+}
+
+#tour figure img{
+	vertical-align:middle;
+}
+
+#tour figcaption{
+	color: #777;
+	line-height: 1.5;
+	letter-spacing: 2px;
+	font-size: 14px;
+	padding: 7px 0 5px 0;
+}
+
+#tour .title{
+	color: #333;
+	font-weight: bold;
+}
+
+#tour .sat{
+	float: right;
+	font-size: 14px;
+	color: #999;
+	font-style: normal;
+	position: relative;
+	top: 5px;
+	right: 5px;
+}
+
+#tour .price{
+	color: #f60;
+	font-size: 14px;
+}
+
+#tour .price strong{
+	font-size: 20px;
+	letter-spacing: 1px;
+}
+#tour .type{
+	width: 90px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+	background-color: #59b200;
+	position: absolute;
+	top: 4px;
+	left: 4px;
+}
+#footer{
+	background-color: #222;
+	height: 360px;
+}
+
+#footer .top{
+	width: 1263px;
+	height: 281px;
+	margin:0 auto;
+	text-align: center;
+}
+#footer .bottom{
+	height: 80px;
+	background-color: #000;
+	text-align: center;
+	color: #777;
+	line-height: 80px;
+	border-top:1px solid #444;
+
+}
+#footer .block{
+	width: 410px;
+	height: 280;
+	display: inline-block;
+	text-align: left;
+	color: #ccc;
+	vertical-align: top;
+}
+#footer h2{
+	font-size: 24px;
+	font-weight: normal;
+	padding: 20px 0 10px 20px;
+}
+#footer hr{
+	width: 90%;
+	border: 1px dashed #333;
+}
+#footer ul{
+	font-size: 18px;
+	color: #777;
+	text-indent: 28px;
+	line-height: 2;
+}
+
+#footer .left{
+
+}
+#footer .middle{
+
+}
+#footer .right{
+
+}
