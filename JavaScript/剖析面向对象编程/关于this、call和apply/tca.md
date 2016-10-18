@@ -253,5 +253,73 @@
 
 	> Function.prototype.bind 大部分浏览器都实现了内置的这个方法，用来指定函数内this指向，可以模拟此函数
 
+		Function.prototype.bind=function(context){
+			var self=this;     		//保存原函数
+			return function(){	//返回一个新的函数
+				return self.apply(context,arguments);		//执行新的函数的时候，会把之前传入的context当作新函数体内的this
+			}
+		};
+		
+		var obj={
+			name:'jiang',
+		};
+		
+		var func=function(){
+			alert(this.name);  //jiang
+		}.bind(obj);
+		
+		func();
+
+	实现传参
+
+		Function.prototype.bind=function(){
+			var self=this,    		//保存原函数
+				context=[].shift.call(arguments), //绑定this上下文
+				args=[].slice.call(arguments);//剩余的参数转换为数组
+				alert(args);
+				alert(context);
+			return function(){	//返回一个新的函数
+				return self.apply(context,[].concat.call(args,[].slice.call(arguments)));		
+				//执行新的函数的时候，会把之前传入的context当作新函数体内的this
+				//并且组合两次分别传入的参数，作为新函数的参数
+			}
+		};
+		
+		var obj={
+			name:'jiang',
+		};
+		
+		var func=function(a,b,c,d){
+			alert(this.name);  //jiang
+			alert([a,b,c,d]);  //[1,2,3,4]
+		}.bind(obj,1,2);
+		
+		func(3,4);
+
+	> 借用其他对象方法
+		var A=function(name){
+			this.name=name;
+		}
+		
+		var B=function(){
+			A.apply(this,arguments);
+		}
+		
+		B.prototype.getName=function(){
+			return this.name;
+		}
+		
+		var b=new B('jiang');
+		console.log(b.getName());   //jiang
+	借用Array.prototype对象上的方法
+
+		(function(){
+			Array.prototype.push.call(arguments,3);
+			console.log(arguments);   //[1,2,3]
+		})(1,2);
+
+
+
+
 
 
