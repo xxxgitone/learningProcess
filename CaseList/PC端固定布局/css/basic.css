@@ -2,7 +2,10 @@
 	margin: 0;
 	padding: 0;
 }
-ul{
+body{
+	font-family: "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei UI","Microsoft YaHei",SimHei,"宋体",simsun,sans-serif;
+}
+ul,ol{
 	list-style-type: none;
 }
 a{

@@ -1,46 +1,43 @@
 @charset "utf-8";
 
-#headline{
+#headline {
 	width: 100%;
 	min-width: 1263px;
 	height: 300px;
-	background:linear-gradient(to right bottom,rgba(0,0,0,0.7),rgba(0,0,0,0)) ,url(../img/headline.jpg) no-repeat center;
+	background: linear-gradient(to right bottom, rgba(0,0,0,0.7), rgba(0,0,0,0)), url(../img/headline.jpg) no-repeat center;
 }
-#headline .center{
-	width:1263px;
+#headline .center {
+	width: 1263px;
 	height: 300px;
 	margin: 0 auto;
 }
-#headline hgroup{
+#headline hgroup {
 	padding: 100px 0 0 50px;
 }
-#headline h2{
+#headline h2 {
 	color: #eee;
 	font-size: 36px;
 	letter-spacing: 1px;
 }
-#headline h3{
+#headline h3 {
 	color: #eee;
 	font-size: 20px;
 	letter-spacing: 1px;
 }
-
-#container{
+#container {
 	width: 1263px;
 	margin: 30px auto;
-
 }
-#container .sidebar{
+#container .sidebar {
 	width: 340px;
-	height: 1200px;
 	float: right;
 }
-#container .sidebox{
-	border:1px solid #eee;
-	margin: 0 0 10px;
+#container .sidebox {
+	border: 1px solid #eee;
+	margin: 0 0 10px 0;
 	text-align: center;
 }
-#container .sidebox h2{
+#container .sidebox h2 {
 	font-size: 20px;
 	font-weight: normal;
 	letter-spacing: 1px;
@@ -51,110 +48,379 @@
 	color: #666;
 	text-align: left;
 }
-#container .tag{
-	margin: 10px 0;
+#container .tag {
+	padding: 10px 0;
 }
-#container .tag li{
+#container .tag li {
 	display: inline-block;
+	width: 100px;
 	height: 35px;
 	line-height: 35px;
 	margin: 2px 0;
-	width: 100px;
 	background-color: #eee;
-	display: inline-block;
 	text-align: left;
 	text-indent: 8px;
 }
-#container .tag a{
-	display:block;
+#container .tag a {
+	display: block;
 	color: #999;
 }
-#container .tag a:hover{
+#container .tag a:hover {
 	background-color: #458b00;
 	color: #fff;
 }
-#container .figure{
+#container .figure {
 	padding: 10px 0;
 }
-#container figure{
+#container figure {
 	display: inline-block;
 	padding: 4px;
 	color: #666;
 }
-#container .box{
-	margin: 10px 0;
+#container .box {
+	padding: 10px 0;
 }
-#container .box a{
+#container .box a {
+	display: inline-block;
+	width: 150px;
 	height: 40px;
 	line-height: 40px;
 	margin: 2px 0;
-	width: 150px;
-	color: #999;
-	display: inline-block;
 	text-align: left;
 	text-indent: 35px;
+	color: #999;
 }
-#container .trea1{
+#container .box a.trea1 {
 	background: #eee url(../img/trea1.png) no-repeat 10px center;
 }
-#container .trea2{
+#container .box a.trea2 {
 	background: #eee url(../img/trea2.png) no-repeat 10px center;
 }
-#container .trea3{
+#container .box a.trea3 {
 	background: #eee url(../img/trea3.png) no-repeat 10px center;
 }
-#container .trea4{
+#container .box a.trea4 {
 	background: #eee url(../img/trea4.png) no-repeat 10px center;
 }
-
-#container .list{
+#container .list {
 	width: 910px;
-	height: 1200px;
 	float: left;
 }
-#container .info{
-	background-color: #eee;
+#container .infor {
 	height: 45px;
 	line-height: 45px;
+	background-color: #eee;
+	margin: 0 0 20px 0;
 }
-#container .left{
+#container .information .left {
 	display: inline-block;
 	float: left;
 }
-#container .left li{
+#container .information .left li {
 	display: inline-block;
 	width: 150px;
 	height: 43px;
 	line-height: 43px;
 	text-align: center;
 }
-
-#container .left li:first-child{
+#container .information .left li:first-child {
 	background-color: #fff;
 	border-top: 2px solid #458b00;
-	position: relative;  /*产生左侧线条*/
+	position: relative;
 	left: 1px;
 }
-#container .left a{
-	color:#666;
+#container .information .left a {
+	color: #666;
 }
-#container .right{
+#container .information .right {
 	display: inline-block;
-	float: right;
 	padding: 0 20px 0 0;
+	float: right;
 }
-#container .right li{
+#container .information .right li {
 	display: inline-block;
 	width: 60px;
 	height: 45px;
 	line-height: 45px;
 	text-align: center;
 }
-#container .right a{
+#container .information .right a {
 	padding: 3px 8px;
 	color: #666;
 }
-#container .right a.selected,#container .right a:hover{
+#container .information .right a.selected, #container .information .right a:hover {
 	background-color: #458b00;
 	color: #fff;
+}
+#container .tour {
+	width: 908px;
+	padding: 0;
+	margin: 0 0 20px 0;
+	border: 1px solid #eee;
+	position: relative;
+}
+#container .tour img {
+	float: left;
+}
+#container .tour figcaption {
+	width: 528px;
+	height: 230px;
+	float: right;
+}
+#container .tour hgroup {
+	width: 300px;
+}
+#container .tour h2 {
+	font-size: 24px;
+	color: #333;
+	font-weight: normal;
+	padding: 10px 0 10px 25px;
+}
+#container .tour h3 {
+	font-size: 16px;
+	color: #666;
+	line-height: 1.5;
+	font-weight: normal;
+	padding: 10px 0 10px 25px;
+}
+#container .tour ol {
+	padding: 0 0 0 25px;
+	color: #666;
+	line-height: 2;
+}
+#container .tour mark {
+	background-color: #fff;
+	border: 1px solid #458b00;
+	border-radius: 4px;
+	padding: 0 5px;
+	color: #458b00;
+}
+#container .tour .buy {
+	position: absolute;
+	top: 55px;
+	right: 30px;
+}
+#container .tour .price {
+	color: #f60;
+	font-size: 20px;
+}
+#container .tour .price strong {
+	font-size: 36px;
+}
+#container .tour .price s {
+	font-size: 16px;
+	color: #999;
+}
+#container .tour .reserve {
+	margin: 10px 0 0 0;
+}
+#container .tour .reserve a {
+	display: block;
+	width: 152px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 20px;
+	color: #fff;
+	background-color: #f60;
+}
+#container .tour .type {
+	width: 90px;
+	height: 25px;
+	line-height: 25px;
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+	background-color: #59b200;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#container .tour .disc {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 52px;
+	height: 52px;
+	background: url(../img/disc.png) no-repeat;
+}
+#container .tour .disc span {
+	display: block;
+	transform: rotate(45deg);
+	width: 52px;
+	height: 52px;
+	padding: 5px 0 0 0;
+	text-indent: 7px;
+	font-size: 14px;
+	color: #ff7a4d;
+}
+#container .tour footer {
+	width: 528px;
+	height: 30px;
+	line-height: 30px;
+	letter-spacing: 1px;
+	text-indent: 25px;
+	background-color: #fafafa;
+	position: absolute;
+	bottom: 0;
+}
+#container .tour time {
+	color: #458b00;
+}
+#container .information .more, #container .scenery .more {
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	background-color: #fafafa;
+	border-radius: 10px;
+	cursor: pointer;
+	font-size: 18px;
+	color: #666;
+}
+#container .ticket, #container .scenery, #container .about {
+	color: #666;
+	font-size: 20px;
+}
+#container .ticket h2, #container .scenery h2, #container .about h2 {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px dashed #999;
+	padding: 0 0 15px 0;
+	font-size: 30px;
+	font-weight: normal;
+}
+#container .ticket .type {
+	margin: 20px 0 10px 0;
+}
+#container .ticket .type mark {
+	color: #fff;
+	background-color: #458b00;
+	padding: 5px 8px;
+	border-radius: 4px;
+	margin: 0 10px 0 16px;
+}
+#container .ticket .left {
+	width: 43%;
+	display: inline-block;
+}
+#container .ticket .right {
+	width: 43%;
+	display: inline-block;
+}
+#container .ticket .button {
+	width: 9%;
+	display: inline-block;
+}
+#container .ticket .submit {
+	display: block;
+	width: 90px;
+	height: 90px;
+	line-height: 90px;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 20px;
+	color: #fff;
+	background-color: #f60;
+	border: none;
+	position: relative;
+	top: 8px;
+	cursor: pointer;
+}
+#container .ticket .form p {
+	line-height: 3;
+}
+#container .ticket .form input {
+	width: 250px;
+	height: 30px;
+	background-color: #fff;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	color: #666;
+	padding: 5px;
+	margin: 0 0 0 16px;
+	font-size: 18px;
+}
+#container .ticket .new {
+	margin: 20px 0 0 0;
+}
+#container .ticket .new ul {
+	margin: 20px 0 0 0;
+}
+#container .ticket .new li {
+	display: inline-block;
+	padding: 5px 10px;
+}
+#container .ticket .new li:first-child {
+	padding-left: 0;
+}
+#container .ticket .new li:nth-child(2) {
+	background-color: #458b00;
+	color: #fff;
+	border-radius: 4px;
+}
+#container .ticket table {
+	margin: 20px 0 0 0;
+	width: 100%;
+	border: 1px solid #ddd;
+	border-collapse: collapse;
+}
+#container .ticket th {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #ddd;
+}
+#container .ticket td {
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+}
+#container .ticket tr:nth-child(2n) {
+	background-color: #fafafa;
+}
+#container .ticket tr:hover {
+	background-color: #eee;
+}
+#container .ticket .price {
+	color: #f60;
+}
+#container .ticket .more {
+	color: #666;
+}
+#container .ticket .reserve {
+	display: inline-block;
+	width: 80px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 20px;
+	color: #fff;
+	background-color: #f60;
+}
+#container .scenery figure {
+	border: 1px solid #ddd;
+	display: inline-block;
+	padding: 4px;
+	border-radius: 4px;
+	margin: 15px 5px 15px 0;
+	width: 435px;
+	text-align: left;
+}
+#container .scenery figcaption {
+	text-align: center;
+	padding: 5px 0;
+}
+#container .about p {
+	line-height: 2;
+	margin: 20px 0;
+}
+#container .about address {
+	line-height: 1.6;
+	margin: 20px 0;
+	font-style: normal;
 }

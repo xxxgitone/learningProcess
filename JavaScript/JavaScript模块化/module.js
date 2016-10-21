@@ -46,7 +46,6 @@
 // 	console.log(average());
 // 	console.log(failing());
 
-
 // })();
 
 
