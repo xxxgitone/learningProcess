@@ -1,0 +1,233 @@
+#header{
+	background: url("../images/headerbg.png") repeat-x scroll 0 0 #ffffff;
+	height: 105px;
+}
+#header .contWidth{
+	position: relative;
+	height: 105px;
+	width: 990px;
+	margin: 0 auto;
+	z-index: 100;
+}
+#header .logo{
+	float: left;
+	margin: 0 0 0 10px;
+	color: #fff;
+	line-height: 80px;
+}
+#header .serach{
+	left: 198px;
+	top: 20px;
+	position: absolute;
+}
+#skin{
+	float: right;
+	margin: 10px;
+	padding: 4px;
+	width:120px;
+}
+#skin li{
+	margin-right: 4px;
+	width: 15px;
+	height: 15px;
+	overflow: hidden;
+	display: block;
+	cursor: pointer;
+	float: left;
+	text-indent: -9999px;
+	background-image: url('../images/theme.gif');
+}
+/*皮肤样式*/
+#skin_0{
+	background-position: 0px 0px;
+}
+#skin_1{
+	background-position: 15px 0px;
+}
+#skin_2{
+	background-position: 35px 0px;
+}
+#skin_3{
+	background-position: 55px 0px;
+}
+#skin_4{
+	background-position: 75px 0px;
+}
+#skin_5{
+	background-position: 95px 0px;
+}
+#skin_0.selected{
+	background-position: 0px 15px;
+}
+#skin_1.selected{
+	background-position: 15px 15px;
+}
+#skin_2.selected{
+	background-position: 35px 15px;
+}
+#skin_3.selected{
+	background-position: 55px 15px;
+}
+#skin_4.selected{
+	background-position: 75px 15px;
+}
+#skin_5.selected{
+	background-position: 95px 15px;
+}
+
+/*导航样式*/
+.mainNav{
+	position: absolute;
+	top: 68px;
+	left: 0;
+	height: 37px;
+	line-height: 37px;
+	width: 990px;
+	z-index: 100;
+	background-color: #4a4a4a;
+}
+.mainNav .nav{
+	display: inline;
+	float: left;
+	margin-left: 25px;
+}
+.mainNav ul li{
+	float: left;
+	display: inline;
+	margin-left: 14px;
+	position: relative;
+	z-index: 100;
+}
+.mainNav ul li a{
+	display: block;
+	padding: 0 8px;
+	font-weight: 700;
+	color: #fff;
+	font-size: 14px;
+}
+.jnNav{
+	background: #ffffff;
+	border: 1px solid #b1b1b1;
+	border-top: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 37px;
+	left: 0;
+	width:474px;
+	z-index: 100;
+	display: none;
+}
+.jnNav .subitem{
+	float: left;
+	height: auto !important;
+	min-height: 100px;
+	padding: 10px 20px;
+	width: 450px;
+}
+.jnNav .subitem dd a{
+	color: #999;
+	font-size: 13px;
+}
+.jnNav .subitem dl{
+	border-top: 1px dashed #c4c4c4;
+	overflow: hidden;
+	padding: 8px 0;
+	float: left;
+}
+.jnNav .subitem .fore{
+	border-top-style: none;
+    padding-top: 0;
+}
+.jnNav .subitem dt{
+	float: left;
+	font-weight: bold;
+	line-height: 16px;
+	padding: 4px 3px;
+	text-align: center;
+	width: 76px;
+}
+.jnNav .subitem dt a{
+	color: #000;
+    font-weight: 700;
+	font-size:12px;
+	padding:0;
+}
+.jnNav .subitem dd{
+	float: left;
+	overflow: hidden;
+	padding: 0;
+	width: 364px;
+}
+.jnNav .subitem dd em{
+	border-right: 1px solid #CCCCCC;
+    float: left;
+    font-style: normal;
+    height: 14px;
+    line-height: 14px;
+    margin: 5px 0;
+    padding: 0 8px;
+}
+.jnNav .subitem dd a{
+	color: #666666;
+    white-space: nowrap;
+	font-size:12px;
+	font-weight:normal;
+	padding:0;
+}
+.jnNav .subitem em.noborder {
+    border-right: 0 none;
+}
+
+/*主体内容*/
+#content{
+	clear: both;
+	margin: 0 auto;
+	position: relative;
+	width: 990px;
+}
+.janeshop{
+	height: 560px;
+	overflow: hidden;
+	padding: 10px 0 ;
+	background: #999;
+}
+/*商品分类*/
+#content #jnCatalog{
+	float: left;
+	height: 560px;
+	margin: 0 11px 0 0;
+	overflow: hidden;
+	width: 187px;
+	background: red;
+}
+
+/*轮播图*/
+#content #jnImageroll{
+	float: left;
+	height: 320px;
+	margin: 0 11px 0 0;
+	overflow: hidden;
+	position: relative;
+	width: 550px;
+	background: green;
+}
+
+/*动态*/
+#content #jnNotice{
+	float: left;
+	height: 321px;
+	overflow: hidden;
+	width: 230px;
+	background: yellow;
+}
+
+/*商品展示*/
+#content #jnBrand{
+	float: left;
+	height: 230px;
+	margin: 10px 0 ;
+	overflow: hidden;
+	width: 790px;
+	background: orange;
+}
+
