@@ -26,6 +26,17 @@ img{
 	display: block;
 	max-width: 100%;
 }
+div,figure,figcaption{
+	box-sizing: border-box;    /*当设置某个div的高度后，不管子元素内边距，外边距怎么加，都为这个高度*/
+}
+.clearfix:after{
+	content: '.';
+	background-color: red;
+	display: block;
+	clear: both;
+	visibility: hidden;
+	height: 0;
+}
 #header{
 	width: 100%;
 	height: 0.45rem;
@@ -59,13 +70,135 @@ img{
 #footer{
 	max-width: 6.4rem;
 	background-color: #222;
-	clear: both;
-	margin: 0 auto;
+	margin: 0px auto;
 	color: #777;
 	text-align: center;
 	padding: .1rem 0;
+	font-size: .16rem;
+
 }
 
 #footer .top{
 	padding: 0 0 .05rem 0;
+}
+#search {
+	max-width: 6.4rem;
+	height: .33rem;
+	margin: 0 auto;
+	background-color: #ddd;
+	padding: .03rem 0 0 0;
+	position: relative;
+}
+#search .search {
+	width: 95%;
+	height: .27rem;
+	border-radius: .04rem;
+	border: none;
+	outline: none;
+	background-color: #fff;
+	display: block;
+	margin: 0 auto;
+	font-size: .14rem;
+	padding: 0 .05rem;
+}
+#search .button{
+	display: block;
+	outline: none;
+	width: .5rem;
+	height: .27rem;
+	color: #666;
+	border: none;
+	border-top-right-radius: .04rem;
+	border-bottom-right-radius: .04rem;
+	background-color: #eee;
+	font-size: .14rem;
+	position: absolute;
+	top: .03rem;
+	right: 1%;
+}
+#tour{
+	max-width: 6.4rem;
+	margin: .1rem auto;
+}
+#tour h2{
+	text-align: center;
+	color: #666;
+	font-size: .26rem;
+}
+#tour h3{
+	text-align: center;
+	color: #666;
+	font-size: .16rem;
+	font-weight: normal;
+	margin: .05rem 0 .1rem 0;
+}
+#tour figure{
+	width: 50%;
+	float: left;
+	background-color: #eee;
+	font-size: .16rem;
+	padding: 0 0 .05rem 0;
+}
+#tour figure img{
+	padding: .02rem;
+	border-radius: .04rem;
+}
+#tour figcaption{
+	color: #666;
+	font-size: .16rem;
+	padding: .02rem .05rem;
+}
+#tour h4{
+	font-weight: normal;
+	white-space: nowrap;    /*不换行*/
+	overflow: hidden;		/*隐藏*/
+	text-overflow: ellipsis;  /*溢出的用省略号代替*/
+}
+#tour p{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#tour .info{
+	padding: .1rem 0 0 0;
+	font-size: .16rem;
+}
+#tour .price{
+	color: #f60;
+}
+#tour .price strong{
+	letter-spacing: .01rem;
+}
+#tour .sat{
+	position: relative;
+	float:right;
+	right: .05rem;
+	font-style: normal;
+}
+
+
+
+
+
+/*媒体查询，大于480px小于640px*/
+@media (min-width: 480px) and (max-width: 640px) {
+	#tour h2{
+		font-size: .26rem;
+	}
+	#tour h3,#footer,#tour figcaption,#tour .info{
+		font-size: .16rem;
+	}
+}
+
+/*媒体查询，小于480px*/
+@media (max-width: 480px) {
+	#tour h2{
+		font-size: .20rem;
+	}
+	#tour h3,#tour figcaption,#tour .info{
+		font-size: .14rem;
+	}
+	#footer{
+		font-size: .13rem;
+	}
 }
