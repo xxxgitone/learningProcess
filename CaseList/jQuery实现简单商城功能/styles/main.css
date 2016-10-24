@@ -197,9 +197,61 @@
 	margin: 0 11px 0 0;
 	overflow: hidden;
 	width: 187px;
-	background: red;
+}
+#jnCatalog h2{
+	height: 30px;
+	line-height: 30px;
+	color: #fff;
+	font-size: 12px;
+	text-indent: 13px;
+	background-color: #666;
+}
+.jnCatainfo{
+	border: 1px solid #6e6e6e;
+	border-style: none solid solid;
+	border-width: 0 1px 1px;
+	height: 524px;
+	overflow: hidden;
+	padding: 5px 10px 0;
+	width: 165px;
+}
+.jnCatainfo h3{
+	border-bottom: 1px solid #eee;
+	height: 24px;
+	line-height: 24px;
+	width: 164px;
+}
+.jnCatainfo ul{
+	float: left;
+	padding: 0 2px 8px;
+}
+.jnCatainfo li{
+	color: #aeadae;
+	float: left;
+	height: 24px;
+	line-height: 24px;
+	width: 79px;
+	overflow: hidden;
+	position: relative;
+}
+.jnCatainfo li a{
+	color: #444;
+}
+.jnCatainfo li a:hover{
+	color: #008cd7;
+	text-decoration: none;
+}
+.jnCatainfo li a.promoted{
+	color: #f9044e;
 }
 
+.jnCatainfo li .hot{
+	background: url(../images/hot.gif) no-repeat scroll 0 0 transparent;
+	height: 16px;
+	position: absolute;
+	top: 0;
+	width:21px;
+}
 /*轮播图*/
 #content #jnImageroll{
 	float: left;
@@ -208,25 +260,193 @@
 	overflow: hidden;
 	position: relative;
 	width: 550px;
-	background: green;
 }
-
+#jnImageroll img{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#jnImageroll div{
+	bottom: 0;
+	overflow: hidden;
+	position: absolute;
+	float: left;
+}
+#jnImageroll div a{
+	background-color: #444;
+	color: #fff;
+	display: inline-block;
+	float: left;
+	height: 32px;
+	margin-right: 1px;
+	overflow: hidden;
+	padding: 5px 5px;
+	text-align:center;
+	width: 99px;
+}
+#jnImageroll div a:hover{
+	text-decoration: none;
+}
+#jnImageroll div a em{
+	cursor: pointer;
+	display: block;
+	height: 16px;
+	overflow: hidden;
+	width: 99px;
+}
+#jnImageroll .last{
+	margin: 0;
+	width:100px;
+}
+#jnImageroll a.chos{
+	background: url(../images/adindex.gif) no-repeat center 39px #37a7d7;
+	color: #ffffff;
+}
 /*动态*/
 #content #jnNotice{
 	float: left;
 	height: 321px;
 	overflow: hidden;
 	width: 230px;
-	background: yellow;
 }
+#jnMiaosha{
+	float: left;
+	height: 176px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	width: 230px;
+}
+#jnNoticeInfo{
+	float: left;
+	border:1px solid #dfdfdf;
+	height: 133px;
+	overflow: hidden;
+	width: 228px;
+}
+#jnNoticeInfo h2{
+	height: 23px;
+	line-height: 23px;
+	border-bottom: 1px solid #dfdfdf;
+	text-indent: 2px;
+}
+#jnNoticeInfo ul{
+	float: left;
+	padding: 6px 2px 0 12px;
+}
+#jnNoticeInfo li{
+	height: 20px;
+	line-height: 20px;
+	overflow: hidden;
 
-/*商品展示*/
+}
+#jnNoticeInfo li a{
+	color: #666;
+}
+#jnNoticeInfo li a:hover{
+	color: #008cd7;
+	text-decoration: none;
+}
+/*活动品牌*/
 #content #jnBrand{
 	float: left;
 	height: 230px;
 	margin: 10px 0 ;
 	overflow: hidden;
 	width: 790px;
-	background: orange;
 }
-
+#jnBrandTab{
+	border-bottom: 1px solid #e4e4e4;
+	height: 29px;
+	position: relative;
+	width: 790px;
+	float: left;
+}
+#jnBrandTab h2{
+	height: 29px;
+	line-height: 29px;
+	left: 0;
+	position: absolute;
+	width: 100px;
+}
+#jnBrandTab ul{
+	position: absolute;
+	right: 0;
+	top: 10px;
+}
+#jnBrandTab ul li{
+	float: left;
+	margin: 0 10px 0 0;
+}
+#jnBrandTab ul li a{
+	background-color: #e4e4e4;
+	color: #000;
+	display: inline-block;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 10px;
+}
+#jnBrandTab .chos{
+	background: url(../images/chos.gif) no-repeat scroll 50% bottom transparent;
+	padding-bottom: 3px;
+}
+#jnBrandTab .chos a{
+	background-color: #fa5889;
+	color: #fff;
+	outline: 0 none;
+}
+#jnBrandContent{
+	float: left;
+	height: 188px;
+	overflow: hidden;
+	margin:8px 5px;
+	width: 790px;
+	position: relative;
+}
+#jnBrandList{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 3200px;
+}
+#jnBrandContent li{
+	float: left;
+	height: 188px;
+	overflow: hidden;
+	padding: 0 5px;
+	position: relative;
+	width: 185px;
+}
+#jnBrandContent li img{
+	left: 5px;
+	position: absolute;
+	top: 0;
+}
+#jnBrandContent li span{
+	background-color: #efefef;
+	bottom: 0;
+	color: #666;
+	display: block;
+	font-size: 14px;
+	height: 24px;
+	line-height: 24px;
+	overflow: hidden;
+	position: absolute;
+	text-align:center;
+	width: 183px;
+}
+#jnBrandContent li a{
+	color: #666;
+}
+#jnBrandContent li a:hover{
+	color: #008cd7;
+	text-decoration: none;
+}
+#footer{
+	width: 990px;
+	margin: 0 auto;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #666;
+	font-size: 12px;
+}
