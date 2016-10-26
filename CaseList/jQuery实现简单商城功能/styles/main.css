@@ -20,6 +20,17 @@
 	top: 20px;
 	position: absolute;
 }
+#inputSearch {
+    border: 1px solid #BABEBF;
+    color: #999999;
+    font-size: 14px;
+    height: 17px;
+    padding: 3px 6px 5px 6px;
+    width: 200px;
+}
+#inputSearch.focus{
+    border: 1px solid #00A5FF;
+}
 #skin{
 	float: right;
 	margin: 10px;
@@ -245,12 +256,12 @@
 	color: #f9044e;
 }
 
-.jnCatainfo li .hot{
-	background: url(../images/hot.gif) no-repeat scroll 0 0 transparent;
-	height: 16px;
-	position: absolute;
-	top: 0;
-	width:21px;
+.jnCatainfo li .hot {
+    background: url("../images/hot.gif") no-repeat scroll 0 0 transparent;
+    height: 16px;
+    position: absolute;
+    top: 0;
+    width: 21px;
 }
 /*轮播图*/
 #content #jnImageroll{
@@ -669,7 +680,8 @@ ul.rating li.five a:hover {background-position:0 -160px}
 }
 /* imgHover */
 .imageMask{
-	background-color:#ffffff; 
+	display: block;
+	background-color:#eee; 
 	filter:alpha(opacity=0);
 	opacity: 0;	
 	cursor: pointer;
