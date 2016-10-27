@@ -627,6 +627,7 @@
 .threestar {background-position:0 -48px}
 .fourstar {background-position:0 -64px}
 .fivestar {background-position:0 -80px}
+
 ul.rating li {
 	cursor: pointer;
 	float:left;
