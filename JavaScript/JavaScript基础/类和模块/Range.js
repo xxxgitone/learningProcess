@@ -88,6 +88,17 @@ Range.prototype = {//这样W为重写原型，这样不包含constructor属性
 	}
 }
 
+//Range.prototype.constructo=Range;
+
+//添加一个比较方法
+//一个Range对象和其他不适Range的对象均不相等
+//当且仅当两个范围的端点相等，他们才相等
+Range.prototype.equals=function (that) {
+	if(that==null) return false;  //处理null和undefined
+	if(that.constructor!=Range) return false;//处理非Range对象
+	return this.from=that.from&&this.to=that.to;
+}
+
 var r=new Range(1,3);  //创建一个范围
 console.log(r.includes(2));			//true
 r.foreach(console.log); //输出1,2,3
