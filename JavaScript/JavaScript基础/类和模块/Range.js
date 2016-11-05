@@ -75,8 +75,8 @@ function Range(from, to) {
 	this.to = to;
 }
 
-Range.prototype = {//这样W为重写原型，这样不包含constructor属性
-	constructor:Range,//指定原型，或者使用Range.prototype.includes=function(){/*....*/},依依添加方法
+Range.prototype = { //这样W为重写原型，这样不包含constructor属性
+	constructor: Range, //指定原型，或者使用Range.prototype.includes=function(){/*....*/},依依添加方法
 	includes: function(x) {
 		return this.from <= x && x <= this.to;
 	},
@@ -93,13 +93,33 @@ Range.prototype = {//这样W为重写原型，这样不包含constructor属性
 //添加一个比较方法
 //一个Range对象和其他不适Range的对象均不相等
 //当且仅当两个范围的端点相等，他们才相等
-Range.prototype.equals=function (that) {
-	if(that==null) return false;  //处理null和undefined
-	if(that.constructor!=Range) return false;//处理非Range对象
-	return this.from=that.from&&this.to=that.to;
+Range.prototype.equals = function(that) {
+	if (that == null) return false; //处理null和undefined
+	if (that.constructor != Range) return false; //处理非Range对象
+	return this.from = that.from && this.to = that.to;
 }
 
-var r=new Range(1,3);  //创建一个范围
-console.log(r.includes(2));			//true
+//添加一个比较太小的方法
+//根据下边界来对Range对象排序，如果下边距相等则比较上边界
+//如果传入飞Range值，则抛出异常
+//当且仅当this.equals(that)时，才返回0
+Range.prototype.compareTo=function(that){
+	if(!(that instanceof Range)) 
+		throw new Error("Can't compare a Range with "+that);
+	var diff=this.from-that.from;  //比较下边界
+	if(diff==0) diff=this.to-that.to;
+	return diff;
+}
+
+//可以利用Array.sort进行排序
+//range.sort(function(a,b){return a.compareTo(b)})
+
+Range.byLowerBound=function(a,b){return a.compareTo(b)};
+range.sort(byLowerBound);
+
+
+
+var r = new Range(1, 3); //创建一个范围
+console.log(r.includes(2)); //true
 r.foreach(console.log); //输出1,2,3
-console.log(r);		//输出对象from:1,to:3,foreach:function(f).....
+console.log(r); //输出对象from:1,to:3,foreach:function(f).....
