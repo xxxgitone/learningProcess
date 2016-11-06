@@ -167,3 +167,5 @@ Object.freeze();//和seal功能一样
 
 
 
+
+
