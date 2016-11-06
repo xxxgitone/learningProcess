@@ -84,6 +84,9 @@ Function.prototype.extend = function(constructor, methods, statics) {
 	return defineSubClass(this, constructor, methods, statics);
 }
 
+
+
+
 //这个函数可以用作任何抽象方法，非常方便
 function abstractmethod() {
 	throw new Error('abstract method');
@@ -109,7 +112,13 @@ var Noset=AbstractSet.extend(function Noset(set){this.set=set},{
 	},
 	toString:function(x){
 		return '~'+this.set.toString();
+	},
+	equals:function(that){
+		return that instanceof NotSet&&this.set.equals(that.set);
 	}
-})
+});
+
+
+
 
 

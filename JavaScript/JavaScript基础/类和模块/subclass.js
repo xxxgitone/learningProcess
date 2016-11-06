@@ -174,3 +174,43 @@ var NonNullSet = (functon() {
 			}());
 
 //组合vs子类
+//这种方法更好的实现了上面的功能，这是面向对象编程中一条广为人知的设计原则‘组合由于继承’
+
+/**
+ * 实现一个FilterSet，它包装某个指定集合对象
+ * 并对传入的add方法的值引用了某种特定的过滤器
+ * 范围类中其他方法的核心方法延续到包装后的实例
+ */
+var FilteredSet=Set.extend(
+	function FilteredSet(set,filter){//构造函数
+		this.set=set;
+		this.filter=filter;
+	},{
+		add:function(){
+			//如果有过滤器，则直接使用
+			if(this.filter){
+				for(var i=0;i<arguments.length;i++){
+					var v=arguments[i];
+					if(!this.filter(v))
+						throw new Error('FilteredSet:value'+v+' rejected by filter');
+				}
+			}
+			//调用set的方法
+			this.set.add.apply(this.set,arguments);
+			return this;
+		},
+		//其他方法不变
+		remove:function(){
+			this.set.remove.apply(this.set,arguments);
+			return this;
+		},
+		contains:function(v){return this.set.contains(v);}
+		size:function(){return this.set.size();}
+		foreach:function(f,c){return this.set.foreach(f,c);}
+	})
+//在上面上个那个例子的好处就是，只需要创建一个单独的FilteredSet子类即可
+
+var s=new FilteredSet(new Set(),function(x){return x!==null;})
+
+//还可以对已经过滤后的集合进行过滤
+var t=new FilteredSet(new Set(),function(x){return !(x instanceof Set);})
