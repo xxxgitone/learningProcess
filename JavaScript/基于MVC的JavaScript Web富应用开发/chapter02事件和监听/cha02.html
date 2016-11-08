@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件和监听</title>
+	<!-- <script type="text/javascript" src="../lib/jquery-1.12.3.min.js"></script> -->
+	<script type="text/javascript" src="cha02.js"></script>
+	<style type="text/css" media="screen">
+	    #tabs {
+	      list-style: none;
+	      overflow: hidden;
+	    }
+	    
+	    #tabs li {
+	      float: left;
+	      padding: 10px;
+	      cursor: pointer;
+	    }
+	    
+	    #tabs li.active { color: red; }
+	  
+	    #tabContent div {
+	      display: none;
+	    }
+	    
+	    #tabContent .active {
+	      display: block;
+	    }
+
+  	</style>
+</head>
+<body>
+	<ul id="tabs">
+	    <li data-tab="sect1">Sect1</li>
+	    <li data-tab="sect2">Sect2</li>
+	    <li data-tab="sect3">Sect3</li>
+	    <li data-tab="sect4">Sect4</li>
+	    <li data-tab="sect5">Sect5</li>
+ 	 </ul>
+  
+  	<div id="tabContent">
+	    <div data-tab="sect1">Sect1 content</div>
+	    <div data-tab="sect2">Sect2 content</div>
+	    <div data-tab="sect3">Sect3 content</div>
+	    <div data-tab="sect4">Sect4 content</div>
+	    <div data-tab="sect5">Sect5 content</div>
+  	</div>
+</body>
+</html>
