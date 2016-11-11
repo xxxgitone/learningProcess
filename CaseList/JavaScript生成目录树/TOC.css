@@ -1,0 +1,26 @@
+#TOC{
+	border:solid black 1px;
+	margin:10px;
+	padding: 10px;
+}
+.TOCEntry{
+	font-family: sans-serif;
+}
+.TOCEntry a{
+	text-decoration:none;
+}
+.TOCLevel1{
+	font-size: 16pt;
+	font-weight: bold;
+}
+.TOCLevel2{
+	font-size: 12pt;
+	margin-left: .5in;
+}
+/*表示每个段标号之后都有一个冒号的空格*/
+.TOCSectNum:after{
+	content: ": ";
+}
+.TOCSectNum{
+	display: none;
+}
