@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SVG形状</title>
+</head>
+<body>
+	<svg width="100%" height="1000">
+		<text style="fill: #111;font-size: 24pt" x="50" y="50">HELLO WORLD!</text>
+	
+		<!-- 矩形 -->
+		<rect width="300" height="100" style="fill: #ccc;stroke-width:1;stroke: rgb(0,0,0);" x="10" y="10" rx="20" ry="20"/>
+
+		<!-- 圆 -->
+		<circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"/>
+
+
+		<!-- 椭圆 -->
+		<ellipse cx="100" cy="310" rx="100" ry="40" style="fill:#ff0;stroke:rgb(0,0,100); stroke-width:2"/>
+
+		<!-- 线 -->
+		<line x1="420" y1="110" x2="260" y2="260" style="stroke: rgb(99,99,99);stroke-width:2" />
+
+		<!-- 折线-->
+		<!-- points是多组坐标点，坐标组之间用空格隔开 -->
+		<polyline points="300,300 300,320 320,320 320,340 340,340 340,360" style="fill: white;stroke: red;stroke-width:2"/>
+
+		<!-- 多边形 -->
+		<polygon points="220,100 320,180 300,210 170,250" style="fill:#ccc;stroke: #000;stroke-width1"/>
+
+		<!-- 路径 -->
+		<!--M是整体移动位置，L是直线绘制，Z是闭合路径 -->
+		<path d="M450 50 L550 50 L650 150 Z" style="fill:#fff;stroke-width:1;stroke:#000;"/>
+
+	</svg>
+</body>
+</html>

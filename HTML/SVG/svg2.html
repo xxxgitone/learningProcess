@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SVG</title>
+</head>
+<body>
+	<svg>
+		<rect x="0" y="0" width="100%" height="100%" fill="black"/>
+		<radialGradient id="sunfill" cx="50%" cy="50%" r="100%">
+			<stop stop-color="red" offset="0%" stop-opacity="1" />
+			<stop stop-color="yellow" offset="95%" stop-opacity="1" />
+			<stop stop-color="white" offset="100%" stop-opacity="1" />
+		</radialGradient>
+		<circle cx="660" cy="250" r="60" fill="url(#sunfill)" />
+	</svg>
+</body>
+</html>
