@@ -2,7 +2,7 @@
 //React.createElement(type,[props],[children...])
 
 var MyComponent=React.createClass({
-	displayName:"MyComponent",
+	displayName:"MyComponent", //是在你查看你的React应用的调用信息时所使用的属性
 
 	render:function render(){
 		return React.createElement(
