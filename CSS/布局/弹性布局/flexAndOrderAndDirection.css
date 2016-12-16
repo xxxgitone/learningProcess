@@ -1,0 +1,32 @@
+#container{
+	/*使用flex属性即可进行弹性布局*/
+	display:flex;
+	
+	/*使用flex-direction属性可以指定多个元素的排列顺序
+		row:横向排列(默认);
+		row-reverse:横向反向排列;
+		column:纵向排列;
+		column-reverse:纵向反向排列;
+	*/
+	flex-direction:column;
+}
+#text_a{
+	/*使用order可以控制显示的顺序*/
+	order:3;
+	width:200px;
+	padding:20px;
+	background-color:orange;
+}
+#text_b{
+	order:2;
+	flex:1;
+	padding:20px;
+	background-color:yellow;
+}
+#text_c{
+	order:1;
+	width:200px;
+	padding:20px;
+	background-color:limegreen;
+}
+#text_a,#text_b,#text_c{box-sizing:border-box;}
