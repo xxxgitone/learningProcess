@@ -1,0 +1,29 @@
+#container{
+	display: flex;
+	border:5px solid blue;
+	flex-direction:row;
+	width: 600px;
+	height: 30px;
+	/*此属性用于指定如何布局容器中除了子元素之外的main axis轴方向上的剩余空白部分
+		flex-start：从main-start开始布局所有子元素(默认值)
+		fle-end:从main-end开始布局所有子元素;
+		center:居中布局所有子元素;
+		space-between:将第一个子元素布局在main-start处，将最后一个布局在main-end处
+						空白部分平均分配在所有子元素与子元素之间;
+		space-around:将空白部分平均分配在一下几处：main-start与第一个子元素之间，
+					个子元素与子元素之间，最后一个子元素与main-end之间;
+	*/
+	justify-content: space-around;
+}
+#text_a{
+	background-color: orange;
+	width: 100px;
+}
+#text_b{
+	background-color: yellow;
+	width: 150px;
+}
+#text_c{
+	background-color: limegreen;
+	width: 200px;
+}

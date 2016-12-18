@@ -1,0 +1,31 @@
+#container{
+	display: flex;
+	border: 5px solid blue;
+	width: 300px;
+	height: 400px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	/*进行多行布局时，使用此属性指定各行对齐方式
+		flex-start：从cross-start开始布局所有子元素(默认值)
+		fle-end:从cross-end开始布局所有子元素;
+		center:居中布局所有子元素;
+		space-between:将第一个子元素布局在cross-start处，将最后一个布局在cross-end处
+						空白部分平均分配在所有子元素与子元素之间;
+		space-around:将空白部分平均分配在一下几处：crossstart与第一个子元素之间，
+					个子元素与子元素之间，最后一个子元素与crossend之间;
+	*/
+	align-content: space-around;
+}
+#container div{
+	width: 100px;
+	height: 100px;
+}
+#container div:nth-child(3n+1){
+	background-color: orange;
+}
+#container div:nth-child(3n+2){
+	background-color: yellow;
+}
+#container div:nth-child(3n+3){
+	background-color: limegreen;
+}

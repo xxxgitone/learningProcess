@@ -1,0 +1,36 @@
+#container{
+	display: flex;
+	border:5px solid blue;
+	flex-direction:row;
+	width: 600px;
+	/*此属性与justif-content类似用来指定子元素地对其方式，但指定的是cross axis轴方向的
+		flex-start：从cross-start开始布局所有子元素(默认值)
+		fle-end:从cross-end开始布局所有子元素;
+		center:居中布局所有子元素;
+		baseline:如果子元素的布局与容器的布局方向不一致，则该值得作用等效于flex-start属性的作用
+				如果一致，则所有子元素中的内容沿基线对齐;
+		stretch：同一行中的所有子元素被调整为最大值。如果没有指定任何子元素高度，
+				则所有子元素高度被调整为最接近容器高度
+	*/
+	/*align-items: stretch;*/
+
+	align-items: flex-start;
+}
+#text_a{
+	background-color: orange;
+	width: 100px;
+	font-size: 12px;
+	
+	/*和align的区别是这个属性只能指定子元素的排列方式*/
+	align-self: flex-end;
+}
+#text_b{
+	background-color: yellow;
+	width: 150px;
+	font-size: 24px;
+}
+#text_c{
+	background-color: limegreen;
+	width: 200px;
+	font-size: 36px;
+}
