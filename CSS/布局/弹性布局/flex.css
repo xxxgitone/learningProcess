@@ -1,0 +1,36 @@
+#container{
+	/*单单设置这个属性，它的子元素会自适应这个盒子的高度，和宽度*/
+	display: flex;
+	border:5px solid blue;
+
+	/*此时盒子下方会产生空白*/
+	flex-direction:column;
+
+
+	width: 600px;
+	height: 200px;
+}
+#text_a{
+	background-color: orange;
+	/*可以使用多个,计算方式
+		盒子所留下的空白部分，根据子元素设置的flex的数字之和分成几份，
+		这里flex的和为4，即空白部分分成四分，这里分两分，
+		加上默认的高度，就是页面所显示的高度了
+		依次列推
+	*/
+	flex:2;
+}
+#text_b{
+	background-color: yellow;
+	/*在子元素使用这个属性会使得它会自动填充父元素所留下的空白*/
+	flex:1;  
+}
+#text_c{
+	background-color: limegreen;
+	flex:1;
+}
+#text_a,#text_b,#text_c{
+	box-sizing: border-box;
+	font-size: 1.5em;
+	font-weight: bold;
+}

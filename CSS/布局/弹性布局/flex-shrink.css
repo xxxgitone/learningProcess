@@ -1,0 +1,35 @@
+#container{
+	display: flex;
+	border:5px solid blue;
+	flex-direction:row;
+	width: 600px;
+	height: 300px;
+}
+#text_a,#text_b,#text_c{
+	box-sizing: border-box;
+	font-size: 1.5em;
+	font-weight: bold;
+	width: 250px;
+	/*此属性也可调整元素的宽度或者高度，shrink收缩之意
+		当子元素的宽度之和大于盒子的宽度的时候使用它来调整
+		小于时使用flex-grow调整，高度也是如此
+		计算方式，
+		(子元素的宽度之和-盒子宽度)/flex-shrink之和
+		然后按设置的数字缩小对应的宽度
+		(250*3)/5=30
+		第一,三个:250-30=220;
+		第二个：250-90=160
+	*/
+	flex-shrink: 1;
+}
+#text_a{
+	background-color: orange;
+}
+#text_b{
+	background-color: yellow;
+	flex-shrink:3;  
+}
+#text_c{
+	background-color: limegreen;
+}
+

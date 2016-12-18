@@ -1,0 +1,31 @@
+#container{
+	display: flex;
+	border:5px solid blue;
+	/*flex-direction:row;*/
+	/*此属性设置是否换行
+		wrap:换行;
+		nowrap：不换行
+		wrap-reverse：顺序想法换行
+	*/
+	/*flex-wrap: wrap-reverse;*/
+	
+	/*可以讲flex-direction和flex-wrap写入这一个属性中*/
+	flex-flow: row wrap;
+	width: 500px;
+	height: 200px;
+}
+#text_a,#text_b,#text_c{
+	box-sizing: border-box;
+	font-size: 1.5em;
+	font-weight: bold;
+	width: 250px;
+}
+#text_a{
+	background-color: orange;
+}
+#text_b{
+	background-color: yellow;
+}
+#text_c{
+	background-color: limegreen;
+}

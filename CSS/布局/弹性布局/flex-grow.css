@@ -1,0 +1,30 @@
+#container{
+	display: flex;
+	border:5px solid blue;
+	flex-direction:row;
+	width: 600px;
+	height: 300px;
+}
+#text_a,#text_b,#text_c{
+	box-sizing: border-box;
+	font-size: 1.5em;
+	font-weight: bold;
+	width: 150px;
+	/*使用下面属性可以调整子元素的宽度和高度
+		计算方法
+		这里设设置了子元素的宽度为150，父元素的宽度600，剩下的150px的空白
+		按flex-grow总和5分成五分，然后按比例分配下去
+	*/
+	flex-grow: 1;
+}
+#text_a{
+	background-color: orange;
+}
+#text_b{
+	background-color: yellow;
+	flex-grow:3;  
+}
+#text_c{
+	background-color: limegreen;
+}
+
