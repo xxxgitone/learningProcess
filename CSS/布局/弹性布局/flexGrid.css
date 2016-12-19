@@ -1,0 +1,24 @@
+/*.Grid{
+	display: flex;
+}
+.Grid-cell{
+	flex: 1;
+	background-color: #ccc;
+}*/
+
+/*.Grid {
+  display: flex;
+}
+
+.Grid-cell {
+  flex: 1;
+}
+.Grid-cell.u-1of3 {
+  flex: 0 0 33.3333%;
+  background-color: red;
+}
+
+.Grid-cell.u-1of4 {
+  flex: 0 0 25%;
+  background-color: yellow;
+}*/
