@@ -4,15 +4,42 @@
 article em{
 	color: green;
 }
-*/
+
 
 section > h2 {
 	font-style: italic;
-}
-h2 + p{
+}*/
+/*h2 + p{*/
 	/*把段落设置为小型大写字母字体*/
-	font-variant: small-caps;
-}
-h2 ~ a{
+	/*font-variant: small-caps;*/
+/*}*/
+/*h2 ~ a{
 	color: red;
 }
+p *{
+	color:red;
+}
+section * a{
+	font-size: 1.3em;
+}*/
+
+
+
+/*p{
+	font-family: helvetica, sans-serif;
+	font-size: 1.2em;
+}
+.specialtext{
+	font-style: italic;
+}
+p.specialtext{
+	color: red;
+}
+p.specialtext span {
+	font-weight: bold;
+}*/
+.specialtext.featured{
+	font-size: 200%;
+}
+
+
