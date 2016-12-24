@@ -1,0 +1,18 @@
+/*article p {
+	font-weight:bold
+}
+article em{
+	color: green;
+}
+*/
+
+section > h2 {
+	font-style: italic;
+}
+h2 + p{
+	/*把段落设置为小型大写字母字体*/
+	font-variant: small-caps;
+}
+h2 ~ a{
+	color: red;
+}
