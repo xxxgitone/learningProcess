@@ -1,4 +1,4 @@
-#css选择符
++666666666666666666#css选择符
 
 ###1.上下文选择符
 上下文选择符的格式,标签之间用**间隔**空开
@@ -170,3 +170,75 @@ ID的用途是在页面中唯一地标识一个元素。同一个页面中的每
 不要滥用类，可以使用继承和上下文选择符。
 
 ###4.属性选择符
+基于HTML标签的属性选择元素
+#####4.1 属性名选择符
+	标签名[属性名]
+
+比如
+
+	img[title]{
+		border:2px solid blue
+	}
+
+上面代码会选中含有title属性的img标签
+#####4.2属性值选择器
+
+	标签名[属性名="属性值"]
+
+下面代码
+	
+	img[title="red"]{
+		border:1px solid green;
+	}
+会选中title属性为red的img标签
+
+###5.伪类
+#####5.1 UI伪类
+1.链接伪类
+
+* link 表示初始状态样式，即没有点击，也没有鼠标悬停
+* visited 点击过的状态
+* hover 鼠标悬停在链接上的状态
+* active 链接正在被点击的状态
+
+		a:hover{color:black;}
+		a:visited{color:gray;}
+		a:hover{text-decoration:none;}
+		a:active{color:red;}
+标注：一个冒号(:)表示伪类，两个冒号(::)表示css3新增的伪元素
+
+其中hover伪类可以使用于其他元素
+
+	p:hover{background-color:gray;}
+
+2  `:focus`伪类
+表单中的文本字段在用户单击它时会获得焦点，然后用户才能在其中输入字符
+
+	input:focus{border:1px solid blue;} 
+上面代码会在光标位于input字段中时，为该字段添加一个蓝色边框
+
+3 `:target`伪类
+如果用户点击一个纸箱页面中其他元素的链接，则那个元素就是目标（target），可以用 `:target`伪类选中它
+
+	<a href="#more_info">More Information</a>
+
+上面代码的目标就是含有`id`为`more_info`的元素
+
+	<h2 id="more_info">This is the information you are looking for.</h2>
+同时设置css样式
+
+	#more_info:target{
+		background: #eee;
+	}
+那么，当点击了链接时，h2标签的背景将会变成灰色
+
+#####5.2结构化伪类
+结构化伪类可以根据标记的结构应用样式
+
+1. `:first-child`和`:last-child`
+
+
+
+
+
+

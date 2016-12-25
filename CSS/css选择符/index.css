@@ -38,8 +38,15 @@ p.specialtext{
 p.specialtext span {
 	font-weight: bold;
 }*/
-.specialtext.featured{
+/*.specialtext.featured{
 	font-size: 200%;
 }
+*/
+
+#more_info:target{
+	background: #eee;
+}
+
+
 
 
