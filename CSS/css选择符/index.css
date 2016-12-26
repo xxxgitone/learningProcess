@@ -43,10 +43,20 @@ p.specialtext span {
 }
 */
 
-#more_info:target{
+/*#more_info:target{
 	background: #eee;
 }
+*/
 
+/*ol.results li:first-child{
+	color: blue;
+}
+*/
 
-
+p.age::before{
+	content:"Age: ";
+}
+p.age::after{
+	content: " years.";
+}
 

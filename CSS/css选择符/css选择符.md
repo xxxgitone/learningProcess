@@ -237,6 +237,69 @@ ID的用途是在页面中唯一地标识一个元素。同一个页面中的每
 
 1. `:first-child`和`:last-child`
 
+`:first-child`代表一组同胞元素中的第一个元素，而`:last-child`则代表最后一个
+
+结构代码
+
+	<ol class="results">
+		<li>My Fast Poney</li>
+		<li>Steady Trotter</li>
+		<li>Slow Ol' Nag</li>
+	</ol>
+
+css代码
+
+	ol.results li:first-child{
+		color: blue;
+	}
+
+第一个li的颜色变成蓝色，last-chil用法类似
+
+2. `:nth-child(n)`
+
+	li:nth-child(3)
+
+会选中第三个li
+
+###6. 伪元素
+伪元素就是文档中若有实无的元素
+
+1. `::first-letter`
+
+		p::first-letter{font-size:300%;}
+
+可以实现段落首字符放大的效果
+
+2. `::first-line`
+
+可以选中文本段落（一般情况下是段落）的第一行
+
+	p::first-line{
+		font-variant:small-caps;
+	}
+将第一行变成了小型大写字母
+
+3.`::before`和`::after`
+
+可以用于在特定的元素前面或后面添加特殊的内容
+
+如
+
+	<p class="age">25</p>
+
+样式
+
+	p.age::before{
+		content:"Age: ";
+	}
+	p.age::after{
+		content: " years.";
+	}
+
+效果：
+
+	Age: 25 years.
+
 
 
 
