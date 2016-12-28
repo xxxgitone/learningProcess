@@ -10,6 +10,7 @@ const initalState = {
 	users: [],
 	error: null
 }
+
 const reducer = (state=initalState, action) =>{
 	switch (action.type){
 		case "FETCH_USERS_PENDING": {
@@ -40,7 +41,7 @@ const reducer = (state=initalState, action) =>{
 	return state;
 }
 
-
+//promise自动异步，thunk自动发送第二个action，logger日志
 const middleware = applyMiddleware(promise(), thunk, logger());
 
 const store = createStore(reducer, middleware);
