@@ -4,13 +4,49 @@ import { connect } from "react-redux"
 import { fetchUser } from "../actions/userActions"
 import { fetchTweets } from "../actions/tweetsActions"
 
-@connect((store) => {
+
+/*
+ let mapStateToProps = (state) => { ... }
+ @connect(mapStateToProps)
+ export default class MyClass {}
+ */
+
+// 替换成:
+
+/*
+  let mapStateToProps = (state) => { ... }
+  class MyClass {}
+  export default connect(mapStateToProps)(MyClass)
+*/
+
+
+// @connect((store) => {
+//   return {
+//     user: store.user.user,
+//     userFetched: store.user.fetched,
+//     tweets: store.tweets.tweets,
+//   };
+// })
+
+// let mapStateToProps = (store) => {
+//   return {
+//     user: store.user.user,
+//     userFetched: store.user.fetched,
+//     tweets: store.tweets.tweets,
+//   };
+// }
+
+// @connect(mapStateToProps);
+
+
+let mapStateToProps = (store) => {
   return {
     user: store.user.user,
     userFetched: store.user.fetched,
     tweets: store.tweets.tweets,
   };
-})
+}
+
 class Layout extends React.Component {
   componentWillMount() {
     this.props.dispatch(fetchUser())
@@ -35,3 +71,9 @@ class Layout extends React.Component {
     </div>
   }
 }
+
+export default connect(mapStateToProps)(Layout);
+
+// let mapStateToProps = (state) => { ... }
+//   class MyClass {}
+//   export default connect(mapStateToProps)(MyClass)

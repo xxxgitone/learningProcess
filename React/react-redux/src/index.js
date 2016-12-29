@@ -8,5 +8,5 @@ import store from './store';
 const rootEl = document.getElementById('root');
 
 ReactDOM.render(<Provider store={store}>
-  <App />
+  <Layout />
 </Provider>, rootEl);
