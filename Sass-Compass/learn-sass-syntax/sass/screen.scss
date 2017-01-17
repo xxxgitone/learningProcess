@@ -4,7 +4,7 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "variables", "compass/reset";
+@import "variables", "mixin", "compass/reset";
 
 /*标题样式*/
 .headline {
@@ -14,19 +14,22 @@
 /*页面主体内容样式*/
 .main-sec {
 	font-family: $main-sec-ff;
-
-	.headline {
-
-		font: {
-			family: $main-sec-ff;
-			size:16px;
+	
+	//at-root去除嵌套
+	@at-root {
+		.main-sec-headline {
+			font: {
+				family: $main-sec-ff;
+				size:16px;
+			}
+			
 		}
-		
+
+		.main-sec-detail {
+			font-size:12px;
+		}
 	}
 
-	.detail {
-		font-size:12px;
-	}
 }
 
 a {
@@ -35,4 +38,36 @@ a {
 	&:hover{
 		color:blue;
 	}
+}
+
+p {
+	color: hsl(270, 100%, 50%);
+}
+
+.webdemo-sec {
+	//定义的mixin
+	//@include col-6();
+	//这里加了默认参数
+	@include col-sm(50%);
+
+	&:hover {
+		background-color: #f5f5f5;
+	}
+}
+
+.error {
+	color: #f00;
+}
+
+%error {
+	color: #f00;
+}
+.serious-error {
+	//继承.error类
+	//不能继承选择器序列.A .B{}
+	@extend .error;
+	
+	//使用百分号，转化后的代码，将不会出现error类
+	@extend %error;
+	border: 1px #f00;
 }

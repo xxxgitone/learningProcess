@@ -79,17 +79,50 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 .main-sec {
   font-family: Arial, Verdana, Helvetica, sans-serif;
 }
-/* line 18, ../sass/screen.scss */
-.main-sec .headline {
+/* line 20, ../sass/screen.scss */
+.main-sec-headline {
   font-family: Arial, Verdana, Helvetica, sans-serif;
   font-size: 16px;
 }
-/* line 27, ../sass/screen.scss */
-.main-sec .detail {
+
+/* line 28, ../sass/screen.scss */
+.main-sec-detail {
   font-size: 12px;
 }
 
-/* line 35, ../sass/screen.scss */
+/* line 38, ../sass/screen.scss */
 a:hover {
   color: blue;
+}
+
+/* line 43, ../sass/screen.scss */
+p {
+  color: #8000ff;
+}
+
+@media (min-width: 768px) {
+  /* line 47, ../sass/screen.scss */
+  .webdemo-sec {
+    width: 50%;
+    float: left;
+  }
+}
+/* line 53, ../sass/screen.scss */
+.webdemo-sec:hover {
+  background-color: #f5f5f5;
+}
+
+/* line 58, ../sass/screen.scss */
+.error, .serious-error {
+  color: #f00;
+}
+
+/* line 62, ../sass/screen.scss */
+.serious-error {
+  color: #f00;
+}
+
+/* line 65, ../sass/screen.scss */
+.serious-error {
+  border: 1px #f00;
 }
