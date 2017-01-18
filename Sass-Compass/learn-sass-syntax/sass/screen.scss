@@ -4,8 +4,10 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "variables", "mixin", "compass/reset";
+@import "variables", "mixin";
+@import "normalize";
 
+@import "compass/css3";
 /*标题样式*/
 .headline {
 	font-family: $headline-ff;
@@ -49,6 +51,8 @@ p {
 	//@include col-6();
 	//这里加了默认参数
 	@include col-sm(50%);
+	
+	@include box-shadow(1px 1px 3px 2px #cfcecf);
 
 	&:hover {
 		background-color: #f5f5f5;
