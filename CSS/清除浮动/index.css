@@ -1,0 +1,20 @@
+section {
+	border: 1px solid blue;
+	margin: 0 0 10px 0;
+}
+img {
+	float: left;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+p {
+	margin: 0;
+}
+footer {
+	border: 1px solid red;
+}
