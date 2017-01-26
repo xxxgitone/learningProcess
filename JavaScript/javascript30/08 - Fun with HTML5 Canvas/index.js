@@ -25,6 +25,7 @@ function draw(e) {
 	ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 	ctx.beginPath();
 	ctx.moveTo(lastX, lastY);
+	// offsetX获取鼠标指针位置相对于触发事件的对象的 x 坐标。
 	ctx.lineTo(e.offsetX, e.offsetY);
 	ctx.stroke();
 	// lastX = e.offsetX;
