@@ -1,0 +1,30 @@
+/*body {background-color:#caebff;}
+p {
+	font-size:24px; 
+	color:#555; 
+	font-family:Helvetica, Arial, sans-serif; 
+	background-color:#ccc; 
+	margin:10px 0;
+}
+p:nth-child(3) {
+	background: #fff;
+}
+
+p#specialpara {
+	position: fixed;
+	top: 25px;
+	left: 30px;
+}*/
+
+#outer{
+	position: relative;
+	width: 250px;
+	margin: 50px 40px;
+	border-top: 3px solid red;
+}
+#inner{
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	background: #ccc;
+}
