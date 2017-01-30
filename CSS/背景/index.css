@@ -1,0 +1,42 @@
+/*body {
+	background-color: #caebff;
+}
+p {
+	font-family: helvetica, arial, sans-serif;
+	font-size: 18px;
+	width: 350px;
+	margin: 20px auto;
+	padding: 10px;
+	background-color: #fff;
+	color: #666;
+	border: 4px solid;
+}*/
+
+p {
+	font-size: 24px;
+	font-family: helvetica, arial, sans-serif;
+	width: 400px;
+	height: 45px;
+	margin: 20px auto;
+	padding: 10px;
+	color: #000;
+	border: 4px solid #aaa;
+	background-color: #fff;
+	background-image: url(images/blue_circle.png);
+}
+
+p:nth-child(1) {
+	background-repeat: repeat;
+}
+p:nth-child(2) {
+	background-repeat: repeat-x;
+}
+p:nth-child(3) {
+	background-repeat: repeat-y;
+
+}
+p:nth-child(4) {
+	background-repeat: no-repeat;
+}
+
+
