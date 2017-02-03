@@ -26,6 +26,7 @@ function paintCanvas() {
 	canvas.height = height;
 
 	return setInterval(() => {
+		//0,0表示从距离画布的0,0位置绘制
 		ctx.drawImage(video, 0, 0, width, height);
 		//getImageData() 方法返回 ImageData 对象，该对象拷贝了画布指定矩形的像素数据
 		//对于 ImageData 对象中的每个像素，都存在着四方面的信息，即 RGBA 值：
