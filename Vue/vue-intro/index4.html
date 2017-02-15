@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+</head>
+<body>
+
+   <div id="app-4">
+       <!--循环-->
+       <ol>
+           <li v-for="todo in todos">
+                {{ todo.text }}
+           </li>
+       </ol>
+   </div>
+
+   <!--处理用户输入-->
+   <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse message</button>
+   </div>
+
+   <!--使用v-model表单输入和应用状态中做双向数据绑定-->
+   <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message">
+   </div>
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="app4.js"></script>   
+</body>
+</html>

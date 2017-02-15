@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+</head>
+<body>
+    <div id="app-7">
+        <ol>
+        <!--引用组件, 使用v-bind指令将todo传到每一个重复的组件-->
+            <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+        </ol>
+    </div>
+    
+
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="app7.js"></script>   
+</body>
+</html>
