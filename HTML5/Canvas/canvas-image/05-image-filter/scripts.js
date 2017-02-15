@@ -7,6 +7,7 @@ const contextb = canvasb.getContext('2d');
 
 const image = new Image();
 
+
 window.onload = () => {
 	image.src = 'autumn.jpg';
 	image.onload = () => {
@@ -125,3 +126,4 @@ function blurEffect() {
 
 	contextb.putImageData(imageData, 0, 0, 0, 0, canvasa.width, canvasa.height)
 }
+
