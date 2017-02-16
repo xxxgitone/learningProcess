@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+</head>
+<body>
+
+	<div id="counter-event-example">
+		<p>{{ total }}</p>
+
+		<!-- 使用v-on方法监听子组件触发的事件 ，自定义事件，使用自定义事件可以将子组件的数据传递回来。
+		当子组件触发increment事件后，父组件触发incrementTotal事件-->
+		<button-counter @increment="incrementTotal"></button-counter>
+		<button-counter @increment="incrementTotal"></button-counter>
+	</div>
+
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="components.js"></script>   
+</body>
+</html>
