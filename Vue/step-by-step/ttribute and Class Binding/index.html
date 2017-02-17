@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <style type="text/css">
+    	.color-red {
+    		color: red;
+    	}
+    	.color-blue {
+    		color: blue;
+    	}
+    	.is-loading { background-color: red }
+    </style>
+</head>
+<body>
+   
+   <div id="root">
+   		<!-- 通过v-bind绑定title -->
+   		<!-- <button v-bind:title="title">Hover Over Me</button> -->
+
+		<!-- <h1 :class="className">Hello Vue.js</h1> -->
+
+		<button :class="{ 'is-loading': isLoading}" @click="toggleClass">Click Me</button>
+
+   </div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#root',
+
+			data: {
+				// title: 'Now the title is being set through Javascript'
+				
+				// className: 'color-red'
+				
+				isLoading: false,
+			},
+
+			methods: {
+				toggleClass() {
+					this.isLoading = !this.isLoading;
+				},
+			}
+		})
+
+
+
+	</script>
+
+</body>
+</html>

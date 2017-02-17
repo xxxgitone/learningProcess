@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+</head>
+<body>
+   
+   <div id="root">
+   		<ul>
+   			<!-- <li v-for="name in names">{{ name }}</li > -->
+
+   			<!-- v-text 更新元素的 textContent。如果要更新部分的 textContent ，需要使用 {{ Mustache }} 插值。 在这个里与上面的效果一致-->
+   			<li v-for="name in names" v-text="name"></li >
+   		</ul>
+
+   		<input type="text" v-model="newName" >
+
+   		<button @click="addName">Add Name</button>
+   </div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	
+	<script type="text/javascript">
+		
+		var app = new Vue({
+			el: '#root',
+
+			data: {
+				newName: '',
+
+				names: ['Jack', 'Jee', 'wobs', 'Joe']
+			},
+
+			methods: {
+				addName() {
+					this.names.push(this.newName);
+					this.newName = '';
+				}
+			},
+			
+			// //数据渲染之前调用
+			// mounted() {
+			// 	alert('ready')
+			// 	// 可以通过app.names访问data里面的names
+			// // app.names.push('susu')
+			
+			// 	document.querySelector('#button').addEventListener('click', () => {
+			// 		let name = document.querySelector('#input');
+
+			// 		app.names.push(name.value);
+
+			// 		name.value = '';
+
+			// 	})
+			// },
+
+		})
+
+
+	</script>
+
+</body>
+</html>

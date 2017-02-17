@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue计算属性</title>
+</head>
+<body>
+   
+   <div id="root">
+   		<!-- <h1 v-text="new Date()"></h1> -->
+
+   		<!-- <h1>
+   			{{ reverseMessage }}
+   		</h1> -->
+		
+		<h1>All Tasks</h1>
+		<ul>
+			<!-- <li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li > -->
+
+			<li v-for="task in tasks" v-text="task.description"></li >
+
+		</ul>
+
+		<h2>Incomplete Tasks</h2>
+		<li v-for="task in IncompleteTasks" v-text="task.description"></li >
+
+
+   </div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#root',
+
+			data: {
+				// message: 'Hello Vue.js'
+				
+				tasks: [
+					{ description: 'Go to the store', completed: true },
+					{ description: 'Finish screencast', completed: false },
+					{ description: 'Make donation', completed: false },
+					{ description: 'Clear inbox', completed: false },
+					{ description: 'Clean room', completed: true },
+				]
+			},
+			
+			//计算属性是基于它的依赖缓存,计算属性只有在它的相关依赖发生改变时才会重新取值
+			computed: {
+				// reverseMessage() {
+				// 	return this.message.split('').reverse().join('');
+				// }
+				
+				IncompleteTasks() {
+					return this.tasks.filter(task => !task.completed);
+				}
+
+
+			}
+
+		})
+
+
+
+	</script>
+
+</body>
+</html>
