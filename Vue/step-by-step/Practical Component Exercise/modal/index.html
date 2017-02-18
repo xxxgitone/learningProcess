@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Component</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css">
+    <style type="text/css">
+    	body {
+    		margin-top: 40px;
+    	}
+    </style>
+</head>
+<body>
+   
+   	<div id="root" class="container">
+
+      <modal v-if="showModal" @close="showModal = !showModal">
+        
+          <p>Modal text</p>
+
+      </modal>
+
+      <button @click="showModal = !showModal">Show Modal</button>
+
+   	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	
+	<script src="main.js"></script>
+
+</body>
+</html>

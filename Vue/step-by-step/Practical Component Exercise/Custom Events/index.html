@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Component</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.css">
+    <style type="text/css">
+    	body {
+    		margin-top: 40px;
+    	}
+    </style>
+</head>
+<body>
+   
+   	<div id="root" class="container">
+      
+      <!-- 自定义事件 -->
+      <coupon @applied="onCouponApplied"></coupon>
+
+      <h1 v-if="couponApplied">You used a coupon!</h1>
+
+   	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	
+	<script src="main.js"></script>
+
+</body>
+</html>
