@@ -1,0 +1,20 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	background-color: #00b1b3;
+
+	font-family: sans-serif;
+
+	display: flex;
+
+	/*align-items: center;*/
+	align-items: flex-end;
+
+
+	/*justify-content: center;*/
+	justify-content: flex-end;
+
+	
+}
