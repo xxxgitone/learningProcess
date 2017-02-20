@@ -55,11 +55,11 @@
             <div class="addr-list-wrap">
                 <div class="addr-list">
                     <ul>
-                        <li>
+                        <li v-for="(address, index) in filterAddress" :class="{ 'check': index==curIndex}" :click="curIndex=index">
                             <dl>
-                                <dt>Alex</dt>
-                                <dd class="address">北京市海淀去中关村</dd>
-                                <dd class="tel">10010</dd>
+                                <dt>{{ address.userName }}</dt>
+                                <dd class="address">{{ address.streetName }}</dd>
+                                <dd class="tel">{{ address.tel }}</dd>
                             </dl>
                             <div class="addr-opration addr-edit">
                                 <a href="javascript:;" class="addr-edit-btn">
@@ -72,9 +72,9 @@
                                 </a>
                             </div>
                             <div class="addr-opration addr-set-default">
-                                <a href="javascript:;" class="addr-set-default-btn"><i>设为默认</i></a>
+                                <a href="javascript:;" class="addr-set-default-btn" v-if="address.isDefault" @click="setDefault(address.addressId)"><i>设为默认</i></a>
                             </div>
-                            <div class="addr-opration addr-default">默认地址</div>
+                            <div class="addr-opration addr-default" v-if="address.isDefault">默认地址</div>
                         </li>
 
                         <li class="addr-new">
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="shipping-addr-more">
-                    <a class="addr-more-btn up-down-btn" href="javascript:;">
+                    <a class="addr-more-btn up-down-btn" href="javascript:;" @click="limitNum=addressList.length">
                         more
                         <i class="i-up-down">
                             <i class="i-up-down-l"></i>
@@ -123,5 +123,9 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.3/vue.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="js/address.js"></script>
 </body>
 </html>
