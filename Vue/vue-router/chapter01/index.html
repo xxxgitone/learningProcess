@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue router</title>
+	<style>
+		.router-link-active {
+  			color: red;
+		}
+	</style>
+</head>
+<body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	<div id="app">
+		<h1>Hello App!</h1>
+		<p>
+			<router-link to="/foo">Go to foo</router-link>
+			<router-link to="/bar">Go to bar</router-link>
+		</p>
+		<!-- 路由出口 -->
+		<!-- 路由匹配到的组件渲染在这里 -->
+		<router-view></router-view>
+	</div>
+
+	
+	<script src="index.js"></script>
+</body>
+</html>
