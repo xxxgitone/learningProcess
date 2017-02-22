@@ -1,0 +1,40 @@
+* {
+	box-sizing: border-box;
+}
+
+.box {
+	color: white;
+	font-size: 100px;
+	text-align: center;
+	text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+	padding: 10px;
+}
+
+.box1 {background-color: #1abc9c;}
+.box2 {background-color: #3498db;}
+.box3 {background-color: #9b59b4;}
+.box4 {background-color: #34495e;}
+.box5 {background-color: #f1c40f;}
+.box6 {background-color: #e67e22;}
+.box7 {background-color: #e74c3c;}
+.box8 {background-color: #bdc3c7;}
+.box9 {background-color: #2ecc71;}
+.box10 {background-color: #16a5f5;}
+
+.container {
+	display: flex;
+}
+
+.box {
+	flex: 1;
+	order: 1;
+}
+
+.box3 {
+	/*使得元素按照order的值渐进排序，没有设置的默认为0,相同的数值按源代码的顺序排列,可以为负值*/
+	order: 3; 
+}
+
+.box7 {
+	order: -1;
+}

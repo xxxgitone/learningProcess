@@ -1,0 +1,44 @@
+* {
+	box-sizing: border-box;
+}
+
+.box {
+	color: white;
+	font-size: 100px;
+	text-align: center;
+	text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+	padding: 10px;
+}
+
+.box1 {background-color: #1abc9c;}
+.box2 {background-color: #3498db;}
+.box3 {background-color: #9b59b4;}
+.box4 {background-color: #34495e;}
+.box5 {background-color: #f1c40f;}
+.box6 {background-color: #e67e22;}
+.box7 {background-color: #e74c3c;}
+.box8 {background-color: #bdc3c7;}
+.box9 {background-color: #2ecc71;}
+.box10 {background-color: #16a5f5;}
+
+.container {
+	/*display: inline-flex; 值 inline-flex 使弹性容器成为单个不可分的行内级元素。*/
+	display: flex;
+	border: 10px solid goldenrod;
+	/*min-height: 100vh; */ /*vh视口高度的 1/100。*/
+	min-height: 100vh;
+	
+	/*设置换行后子盒子的高度会按行数均等分配*/
+	flex-wrap: wrap;
+
+
+	/*flex-direction: column;*/
+}
+
+.box {
+	/*设置宽度为300px时，且容器没有设置换行，此时全部盒子的宽度总和大于container容器，内部盒子的宽度将均等分配*/
+	/*width: 300px;*/
+
+	width:calc(33.333333% - 20px);
+	margin:10px;
+}
