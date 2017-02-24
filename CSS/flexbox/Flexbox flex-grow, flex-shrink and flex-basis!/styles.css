@@ -1,0 +1,53 @@
+* {
+	box-sizing: border-box;
+}
+
+.box {
+	color: white;
+	font-size: 40px;
+	text-align: center;
+	text-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+	padding: 10px;
+}
+
+.box1 {background-color: #1abc9c;}
+.box2 {background-color: #3498db;}
+.box3 {background-color: #9b59b4;}
+.box4 {background-color: #34495e;}
+.box5 {background-color: #f1c40f;}
+.box6 {background-color: #e67e22;}
+.box7 {background-color: #e74c3c;}
+.box8 {background-color: #bdc3c7;}
+.box9 {background-color: #2ecc71;}
+.box10 {background-color: #16a5f5;}
+
+.container {
+	display: flex;
+}
+
+.box1 {
+	/*设置或检索弹性盒伸缩基准值*/
+	/*如果所有子元素的基准值之和大于剩余空间，则会根据每项设置的基准值，按比率伸缩剩余空间*/
+	flex-basis: 400px;
+	
+	/*设置或检索弹性盒的扩展比率。*/
+	/*根据弹性盒子元素所设置的扩展因子作为比率来分配剩余空间。*/
+	flex-grow: 1;
+
+	/*设置或检索弹性盒的收缩比率。*/
+	/*根据弹性盒子元素所设置的收缩因子作为比率来收缩空间。*/
+	flex-shrink: 10;
+
+	/*flex：none | <' flex-grow '> <' flex-shrink >'? || <' flex-basis '>*/
+	/*复合属性。设置或检索弹性盒模型对象的子元素如何分配空间。*/
+
+	/*flex: 1 10 400px;*/
+}
+
+.box2 {
+	flex-basis: 400px;
+
+	flex-shrink: 2;
+}
+
+
