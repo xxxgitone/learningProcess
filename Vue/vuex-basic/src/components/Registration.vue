@@ -18,7 +18,7 @@
         },
         methods: {
             registerUser(user) {
-                this.$store.commit('registerUser', user.id);
+                this.$store.dispatch('register', user.id);
             }
         }
     }
