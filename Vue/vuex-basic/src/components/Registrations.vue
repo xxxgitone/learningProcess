@@ -14,23 +14,33 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex'
+
     export default {
         methods: {
             unregister(registration) {
-                const user = this.$store.users.find(user => {
-                   return user.id == registration.userId;
-                });
-                user.registered = false;
-                this.$store.registrations.splice(this.$store.registrations.indexOf(registration), 1);
+               this.$store.commit({
+                    type: 'unregister',
+                    userId: registration.userId
+               })
             }
         },
         computed: {
-            registrations() {
-                return this.$store.state.registrations;
-            },
-            total() {
-                return this.$store.registrations.length;
-            }
+            // 辅助函数仅仅是将 store 中的 getters 映射到局部计算属性
+            // 可以直接写registrations,也可以取别名
+            ...mapGetters({
+                registrations:'registrations',
+                total: 'totalRegistrations'
+            })
+
+            // ...mapGetters(['registrations','totalRegistrations'])
+
+            // registrations() {
+            //     return this.$store.getters.registrations;
+            // },
+            // total() {
+            //     return this.$store.getters.totalRegistrations;
+            // }
         }
     }
 </script>

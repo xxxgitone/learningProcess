@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+export default new Vuex.Store({
 	state: {
 		registrations: [],
 		users: [
@@ -12,6 +12,37 @@ export const store = new Vuex.Store({
 		    {id: 3, name: 'Chris', registered: false},
 		    {id: 4, name: 'Sven', registered: false}
 		]
+	},
+	// 从state派生出一些状态,可以认为是 store 的计算属性
+	getters: {
+		unregisteredUsers(state) {
+			return state.users.filter(user => !user.registered);
+		},
+		registrations(state) {
+			return state.registrations;
+		},
+		totalRegistrations(state) {
+			return state.registrations.length;
+		}
+	},
+	mutations: {
+		registerUser(state, userId) {
+		    const date = new Date;
+		    const user = state.users.find(user => user.id = userId);
+		    user.registered = true;
+			const registration = {
+				userId: user.id,
+				name: user.name,
+				date: date.getMonth() + '/' + date.getDay(),
+			}
+			state.registrations.push(registration);
+		},
+		unregister(state, payload) {
+		    const user = state.users.find(user => user.id = payload.userId);
+		    user.registered = false;
+		    const registration = state.registrations.find(registration =>  registration.id = payload.userId);
+		    state.registrations.splice(state.registrations.indexOf(registration), 1);
+		}
 	}
 });
 

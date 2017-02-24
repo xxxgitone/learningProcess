@@ -13,14 +13,12 @@
     export default {
         computed: {
             users () {
-                return this.$store.state.users;
+                return this.$store.getters.unregisteredUsers;
             }
         },
         methods: {
             registerUser(user) {
-                const date = new Date;
-                user.registered = true;
-                this.$store.state.registration.spush({userId: user.id, name: user.name, date: date.getMonth() + '/' + date.getDay()});
+                this.$store.commit('registerUser', user.id);
             }
         }
     }

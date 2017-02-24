@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import Registration from './components/Registration.vue';
-  import Registrations from './components/Registrations.vue';
+import Registration from './components/Registration.vue';
+import Registrations from './components/Registrations.vue';
 
 export default {
     components: {
