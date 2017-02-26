@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://use.fontawesome.com/267672d6d1.js"></script>
+</head>
+<body>
+	
+	<div id="wrapper">	
+
+		<header class="top">
+			<h1>What The Flexbox?!</h1>
+		</header>
+
+		<nav class="flex-nav">
+			<a href="#" class="toggleNav">██ MENU</a>
+			<ul>
+				<li><a href="#">Item 01</a></li>
+				<li><a href="#">Item 02</a></li>
+				<li><a href="#">Item 03</a></li>
+				<li><a href="#">Item 04</a></li>
+				<li><a href="#">Item 05</a></li>
+				<li><a href="#">Item 06</a></li>
+				<li class="social">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+				</li>
+				<li class="social">
+					<a href="#"><i class="fa fa-github"></i></a>
+				</li>
+				<li class="social">
+					<a href="#"><i class="fa fa-instagram"></i></a>
+				</li>
+				<li class="social">
+					<a href="#"><i class="fa fa-twitter"></i></a>
+				</li>
+			</ul>
+		</nav>
+
+		<section class="hero">
+			<img src="http://wes.io/hx9M/oh-la-la.jpg" alt="">
+		</section>
+
+		<section class="details">
+			<p>A simple video course to help you master Flexbox</p>
+			<p>Sign up today to grab all the vieo and !</p>
+		</section>
+
+		<section class="signup">
+			<form>
+				<input type="text" placeholder="Your name">
+				<input type="email" placeholder="Email address" >
+				<input type="submit"  value="Sign me up">				
+			</form>
+		</section>
+
+		<footer>
+			<p>&copy;xxx</p>
+		</footer>
+
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.js"></script>
+	<script>
+		$(function() {
+			$('.toggleNav').on('click', function() {
+				$('.flex-nav ul').toggleClass('open');
+			})
+		})
+	</script>
+</body>
+</html>
