@@ -1,0 +1,42 @@
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+body {
+	font-family: sans-serif;
+	margin: 0;
+	background-image: linear-gradient(260deg, #2376ae 0%, #a16ecf 100%);
+}
+
+a {
+	color: white;
+}
+
+.item.large {
+	font-size: 48px;
+}
+
+.item.small {
+	font-size: 20px;
+}
+
+.item {
+	background: rgba(255, 255, 255, 0.2);
+	margin: 10px;
+	padding: 20px;
+	font-size: 30px;
+}
+
+/*flex container*/
+.elements {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.item {
+	flex: 1 1 calc(33.33% - 20px);
+}
+
