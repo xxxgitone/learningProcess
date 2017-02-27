@@ -1,0 +1,43 @@
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+}
+
+nav {
+    background: #25383c;
+    text-align: center;
+}
+
+.nav-list-item {
+    color:white;
+    float: left;
+    width: 25%;
+    width: calc(100% / 4);
+}
+
+.nav-list-item a {
+    display: block;
+    padding: 20px 40px;
+}
+
+.clearfix:before {
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.nav-container-list {
+    max-width: 1280px;
+    margin: 20px auto;
+}
