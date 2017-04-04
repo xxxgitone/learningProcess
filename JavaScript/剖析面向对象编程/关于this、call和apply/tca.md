@@ -1,5 +1,5 @@
-#this、call和apply
-##1.this
+# this、call和apply
+## 1.this
 * this的指向，大致可以分为4类
 
 	* 作为对象的方法调用
@@ -159,7 +159,7 @@
 		var getId=document.getElementById;
 		alert(getId('div1'));
 
-##2.call和apply
+## 2.call和apply
 * call和apply的区别
 
 
