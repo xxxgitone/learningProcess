@@ -1,4 +1,6 @@
 const express = require('express');
+//引入幸运句
+const fortune = require('./lib/fortune');
 
 const app = express();
 
@@ -13,15 +15,6 @@ app.set('port', process.env.PORT || 3000);
 //加载静态资源
 app.use(express.static(__dirname + '/public'));
 
-//随机幸运句,用于当作视图中的动态数据
-const fortunes = [
-    "Conquer your fears or they will conquer you.",
-	"Rivers need springs.",
-	"Do not fear what you don't konow",
-	"You will have a pleasant surprise",
-	"wheneven possible, keep is simple"
-]
-
 //首页路由
 app.get('/', function(req, res) {
     res.render('home');
@@ -29,9 +22,8 @@ app.get('/', function(req, res) {
 
 // 关于页面
 app.get('/about', function(req, res) {
-    const randomFortne = fortunes[Math.floor(Math.random() * fortunes.length)];
     res.render('about', {
-        fortune: randomFortne
+        fortune: fortune.getFortune()
     });
 });
 
