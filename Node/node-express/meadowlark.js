@@ -1,0 +1,53 @@
+const express = require('express');
+
+const app = express();
+
+//设置模板引擎,默认布局为main.handlebars
+const handlebars = require('express-handlebars').create({defaultLayout: 'main'});
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+
+//设置端口，这样可以在启动服务器前通过设置环境变量覆盖端口，如果发现不是监听的3000，检查是否设置了环境变量PORT
+app.set('port', process.env.PORT || 3000);
+
+//加载静态资源
+app.use(express.static(__dirname + '/public'));
+
+//随机幸运句,用于当作视图中的动态数据
+const fortunes = [
+    "Conquer your fears or they will conquer you.",
+	"Rivers need springs.",
+	"Do not fear what you don't konow",
+	"You will have a pleasant surprise",
+	"wheneven possible, keep is simple"
+]
+
+//首页路由
+app.get('/', function(req, res) {
+    res.render('home');
+})
+
+// 关于页面
+app.get('/about', function(req, res) {
+    const randomFortne = fortunes[Math.floor(Math.random() * fortunes.length)];
+    res.render('about', {
+        fortune: randomFortne
+    });
+});
+
+//定制404页面
+app.use(function(req, res) {
+    res.status(404);
+    res.render('404');
+})
+
+//定制500页面
+app.use(function(err, req, res, next) {
+    console.log(err.stack);
+    res.status(500);
+    res.render('500');
+})
+
+app.listen(app.get('port'), function() {
+    console.log('Express started on http://localhsot:' + app.get('port') + '; press Ctrl-C to terminate...');
+})
