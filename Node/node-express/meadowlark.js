@@ -1,6 +1,8 @@
 const express = require('express');
 //引入幸运句
 const fortune = require('./lib/fortune');
+//处理文件上传
+const formidable = require('formidable');
 
 const app = express();
 
@@ -149,9 +151,38 @@ app.post('/process', function(req, res) {
 
 })
 
+//图片上传
+app.get('/contest/vacation-photo', function(req, res) {
+    const now = new Date();
+    res.render('contest/vacation-photo', {
+        year: now.getFullYear(),
+        month: now.getMonth()
+    })
+})
+
+//处理上传
+app.post('/contest/vacation-photo/:year/:month', function(req, res) {
+    const form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        if(err) return res.redirect(303, '/error');
+        console.log('reveived fields:');
+        console.log(fields);
+        console.log('reveived files:');
+        console.log(files);
+        res.redirect(303, '/thank-you');
+
+        //接下来可以保存到数据库，或者云端
+    })
+})
+
 //感谢页面
 app.get('/thank-you', function(req, res) {
     res.render('thank-you');
+})
+
+//错误页面
+app.get('/error', function(req, res) {
+    res.render('error');
 })
 
 //定制404页面

@@ -13,7 +13,8 @@
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "express": "^4.15.2",
-    "express-handlebars": "^3.0.0"
+    "express-handlebars": "^3.0.0",
+    "formidable": "^1.1.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
