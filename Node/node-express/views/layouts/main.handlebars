@@ -13,6 +13,15 @@
     {{! 自定义非辅助方法，在别的页面可以通过 #section 'head' 的方式引用}}
     {{{_sections.head}}}
 
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/main.css">
 
 </head>
 <body>
@@ -40,5 +49,8 @@
         {{/if}}
         <script>mocha.run()</script>
     {{/if}}
+
+     <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

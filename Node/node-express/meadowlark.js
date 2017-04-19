@@ -25,6 +25,8 @@ app.set('port', process.env.PORT || 3000);
 //加载静态资源
 app.use(express.static(__dirname + '/public'));
 
+app.use(require('body-parser')());
+
 //测试，当查询字符串test=1时
 app.use(function(req, res, next) {
     //res.locals对象是要传给视图的上下文的一部分，在main.handlebars中引入，有条件的测试
@@ -111,6 +113,46 @@ app.get('/data/nursery-rhyme', function(req, res){
 		noun: 'heck',
 	});
 });
+
+//注册页面
+app.get('/newsletter', function(req, res) {
+    // CSRF目前是个虚拟值
+    res.render('newsletter', {
+        csrf: 'CSRF token goes here'
+    });
+})
+
+//注册请求
+app.post('/process', function(req, res) {
+    //express处理表单
+    // res.locals.name = req.body.name;
+    // console.log(req.query.form);
+    // console.log(req.body.name);
+    // console.log(req.body.email);
+
+    // res.redirect(303, '/thank-you');
+
+    //AJax表单处理
+    //req.xhr判断是否为ajax
+    //req.accepts('json, html')询问最佳返回格式是json还是html
+    if(req.xhr || req.accepts('json, html') === 'json') {
+        res.send({success: true});
+
+        //发生错误，应该发送{error: 'error'}
+
+        //在这个函数内，还可以处理任何：通常会写入数据库
+    } else {
+        res.redirect(303, '/tank-you');
+
+        //错误的话，因该重定向到错误页面
+    }
+
+})
+
+//感谢页面
+app.get('/thank-you', function(req, res) {
+    res.render('thank-you');
+})
 
 //定制404页面
 app.use(function(req, res) {
