@@ -1,0 +1,14 @@
+<h1>Request Group Rate</h1>
+<form>
+    <input type="hidden" name="referrer">
+    name: <input type="text" id="fieldName" name="name"><br>
+    Group size: <input type="text" name="groupSize"/><br>
+    Email: <input type="email" name="email"><br>
+    <input type="submit" value="submit">
+</form>
+<script>
+    $(document).ready(function() {
+        //document.referrer 可返回载入当前文档的文档的 URL。如果当前文档不是通过超级链接访问的，则为 null
+        $('input[name="referrer"]').val(document.referrer);
+    })
+</script>

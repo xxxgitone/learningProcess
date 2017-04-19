@@ -37,6 +37,17 @@ app.get('/about', function(req, res) {
     });
 });
 
+//hood river景点页面，包含进入request group rate页面的链接
+app.get('/tours/hood-river', function(req, res) {
+    res.render('tours/hood-river');
+})
+
+// request group rate页面
+//用于检测用户是从哪个页面点击进来的
+app.get('/tours/request-group-rate', function(req, res) {
+    res.render('tours/request-group-rate');
+})
+
 //定制404页面
 app.use(function(req, res) {
     res.status(404);
