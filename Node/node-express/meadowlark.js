@@ -99,6 +99,19 @@ app.get('/tours/request-group-rate', function(req, res) {
 //     res.render('jquery-test');
 // })
 
+app.get('/nursery-rhyme', function(req, res){
+	res.render('nursery-rhyme');
+});
+app.get('/data/nursery-rhyme', function(req, res){
+    //返回一个json数据
+	res.json({
+		animal: 'squirrel',
+		bodyPart: 'tail',
+		adjective: 'bushy',
+		noun: 'heck',
+	});
+});
+
 //定制404页面
 app.use(function(req, res) {
     res.status(404);
