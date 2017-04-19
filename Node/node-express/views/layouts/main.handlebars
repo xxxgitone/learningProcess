@@ -9,13 +9,21 @@
     {{#if showTests}}
         <link rel="stylesheet" href="/vendor/mocha.css">
     {{/if}}
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
-    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-    crossorigin="anonymous"></script>
+
+    {{! 自定义非辅助方法，在别的页面可以通过 #section 'head' 的方式引用}}
+    {{{_sections.head}}}
+
+
 </head>
 <body>
     <header><img src="/img/logo.png" alt="Meadowlark Travel"></header>
     {{{body}}}
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+    {{! 自定义非辅助方法，在别的页面可以通过 #section 'jquery' 的方式引用}}
+    {{{_sections.jquery}}}
 
 
     {{#if showTests}}

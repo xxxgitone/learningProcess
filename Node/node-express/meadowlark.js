@@ -5,7 +5,17 @@ const fortune = require('./lib/fortune');
 const app = express();
 
 //设置模板引擎,默认布局为main.handlebars
-const handlebars = require('express-handlebars').create({defaultLayout: 'main'});
+const handlebars = require('express-handlebars').create({
+    defaultLayout: 'main',
+    //为handlerbars的扩展方法，添加一个段落
+    helpers: {
+        section: function(name, options){
+            if(!this._sections) this._sections = {};
+            this._sections[name] = options.fn(this);
+            return null;
+        }
+    }
+});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
@@ -20,6 +30,43 @@ app.use(function(req, res, next) {
     //res.locals对象是要传给视图的上下文的一部分，在main.handlebars中引入，有条件的测试
     res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
 
+
+    next();
+})
+
+//天气数据
+function getWeatherData() {
+    return {
+        locations: [
+             {
+                name: 'Portland',
+                forecastUrl: 'http://www.wunderground.com/US/OR/Portland.html',
+                iconUrl: 'http://icons-ak.wxug.com/i/c/k/cloudy.gif',
+                weather: 'Overcast',
+                temp: '54.1 F (12.3 C)',
+            },
+            {
+                name: 'Bend',
+                forecastUrl: 'http://www.wunderground.com/US/OR/Bend.html',
+                iconUrl: 'http://icons-ak.wxug.com/i/c/k/partlycloudy.gif',
+                weather: 'Partly Cloudy',
+                temp: '55.0 F (12.8 C)',
+            },
+            {
+                name: 'Manzanita',
+                forecastUrl: 'http://www.wunderground.com/US/OR/Manzanita.html',
+                iconUrl: 'http://icons-ak.wxug.com/i/c/k/rain.gif',
+                weather: 'Light Rain',
+                temp: '55.0 F (12.8 C)',
+            },
+        ]
+    }
+}
+
+//通过一个中间件，将天气数据绑定到res.locals.particals对象上,可以让每个页面都可以调用
+app.use(function(req, res, next) {
+    if(!res.locals.particals) res.locals.particals = {};
+    res.locals.particals.weather = getWeatherData();
 
     next();
 })
@@ -47,6 +94,10 @@ app.get('/tours/hood-river', function(req, res) {
 app.get('/tours/request-group-rate', function(req, res) {
     res.render('tours/request-group-rate');
 })
+
+// app.get('/jquery-test', function(req, res) {
+//     res.render('jquery-test');
+// })
 
 //定制404页面
 app.use(function(req, res) {
