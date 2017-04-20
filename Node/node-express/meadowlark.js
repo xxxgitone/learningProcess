@@ -6,6 +6,8 @@ const formidable = require('formidable');
 // 引入私密文件，包含cookies，数据库，邮箱
 const credentials = require('./credentials');
 
+const emailService = require('./lib/email')(credentials);
+
 const app = express();
 
 //设置模板引擎,默认布局为main.handlebars
@@ -355,6 +357,44 @@ app.get('/cart', function(req, res){
 //感谢页面
 app.get('/thank-you', function(req, res) {
     res.render('thank-you');
+})
+
+app.get('/cart/checkout', function(req, res, next){
+	var cart = req.session.cart;
+    console.log('cart ' + cart);
+	if(!cart) next();
+	res.render('cart-checkout');
+});
+app.get('/cart/thank-you', function(req, res){
+	res.render('cart-thank-you', { cart: req.session.cart });
+});
+app.get('/email/cart/thank-you', function(req, res){
+	res.render('email/cart-thank-you', { cart: req.session.cart, layout: null });
+});
+
+//购物车感谢页面
+app.post('/cart/checkout', function(req, res, next) {
+    const cart = req.session.cart;
+    if(!cart) next(new Error('Cart does not exist'));
+    const name = req.body.name || '';
+    const email = req.body.email || '';
+    if(!email.match(VALID_EMAIL_REGEX)) return res.next(new Error('Invalid email address.'));
+    //分配一个随机的购物车ID；一般我们会用一个数据库ID
+    cart.number = Math.random().toString().replace(/^0\.0*/, '');
+    cart.billing = {
+        name: name,
+        email: email
+    };
+
+    res.render('email/cart-thank-you', {layout: null, cart: cart}, function(err, html) {
+        if( err ) console.log('error in email template');
+        emailService.send(cart.billing.email,
+	        	'Thank you for booking your trip with Meadowlark Travel!',
+	        	html);
+
+    })
+
+    res.render('cart-thank-you', { cart: cart });
 })
 
 //错误页面
