@@ -145,6 +145,7 @@ app.get('/newsletter', function(req, res) {
     });
 })
 
+//// for now, we're mocking NewsletterSignup:
 function NewsLetterSignup() {
 
 }
@@ -152,6 +153,74 @@ function NewsLetterSignup() {
 NewsLetterSignup.prototype.save = function(cb) {
     cb();
 }
+
+
+// mocking product database
+function Product(){
+}
+Product.find = function(conditions, fields, options, cb){
+	if(typeof conditions==='function') {
+		cb = conditions;
+		conditions = {};
+		fields = null;
+		options = {};
+	} else if(typeof fields==='function') {
+		cb = fields;
+		fields = null;
+		options = {};
+	} else if(typeof options==='function') {
+		cb = options;
+		options = {};
+	}
+	const products = [
+		{
+			name: 'Hood River Tour',
+			slug: 'hood-river',
+			category: 'tour',
+			maximumGuests: 15,
+			sku: 723,
+		},
+		{
+			name: 'Oregon Coast Tour',
+			slug: 'oregon-coast',
+			category: 'tour',
+			maximumGuests: 10,
+			sku: 446,
+		},
+		{
+			name: 'Rock Climbing in Bend',
+			slug: 'rock-climbing/bend',
+			category: 'adventure',
+			requiresWaiver: true,
+			maximumGuests: 4,
+			sku: 944,
+		}
+	];
+	cb(null, products.filter(function(p) {
+		if(conditions.category && p.category!==conditions.category) return false;
+		if(conditions.slug && p.slug!==conditions.slug) return false;
+		if(isFinite(conditions.sku) && p.sku!==Number(conditions.sku)) return false;
+		return true;
+	}));
+};
+Product.findOne = function(conditions, fields, options, cb){
+	if(typeof conditions==='function') {
+		cb = conditions;
+		conditions = {};
+		fields = null;
+		options = {};
+	} else if(typeof fields==='function') {
+		cb = fields;
+		fields = null;
+		options = {};
+	} else if(typeof options==='function') {
+		cb = options;
+		options = {};
+	}
+	Product.find(conditions, fields, options, function(err, products){
+		cb(err, products && products.length ? products[0] : null);
+	});
+};
 
 const VALID_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
 
@@ -244,6 +313,44 @@ app.post('/contest/vacation-photo/:year/:month', function(req, res) {
         //接下来可以保存到数据库，或者云端
     })
 })
+
+app.get('/tours/:tour', function(req, res, next){
+	Product.findOne({ category: 'tour', slug: req.params.tour }, function(err, tour){
+		if(err) return next(err);
+		if(!tour) return next();
+		res.render('tour', { tour: tour });
+	});
+});
+app.get('/adventures/:subcat/:name', function(req, res, next){
+	Product.findOne({ category: 'adventure', slug: req.params.subcat + '/' + req.params.name  }, function(err, adventure){
+		if(err) return next(err);
+		if(!adventure) return next();
+		res.render('adventure', { adventure: adventure });
+	});
+});
+
+//自定义中间件，购物车验证
+const cartValidation = require('./lib/cartValidation');
+
+app.use(cartValidation.checkWaivers);
+app.use(cartValidation.checkGuestCounts);
+
+app.post('/cart/add', function(req, res, next){
+	let cart = req.session.cart || (req.session.cart = []);
+	Product.findOne({ sku: req.body.sku }, function(err, product){
+		if(err) return next(err);
+		if(!product) return next(new Error('Unknown product SKU: ' + req.body.sku));
+		cart.push({
+			product: product,
+			guests: req.body.guests || 0,
+		});
+		res.redirect(303, '/cart');
+	});
+});
+app.get('/cart', function(req, res){
+	let cart = req.session.cart || (req.session.cart = []);
+	res.render('cart', { cart: cart });
+});
 
 //感谢页面
 app.get('/thank-you', function(req, res) {
