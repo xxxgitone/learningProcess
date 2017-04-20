@@ -26,7 +26,24 @@
 </head>
 <body>
     <header><img src="/img/logo.png" alt="Meadowlark Travel"></header>
-    {{{body}}}
+
+    <div class="container">
+        {{#if flash}}
+            <div class="alert alert-dismissible alert-{{flash.type}}">
+                <button type="button" class="close" 
+                    data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>{{flash.intro}}</strong> {{{flash.message}}}
+            </div>
+        {{/if}}
+
+        {{{body}}}
+
+        <hr>
+
+        <footer>
+            <p>&copy; Meadowlark Travel 2014</p>
+        </footer>
+    </div> <!-- /container -->    
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"
     integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="

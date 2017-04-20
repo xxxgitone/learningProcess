@@ -3,6 +3,8 @@ const express = require('express');
 const fortune = require('./lib/fortune');
 //处理文件上传
 const formidable = require('formidable');
+// 引入私密文件，包含cookies，数据库，邮箱
+const credentials = require('./credentials');
 
 const app = express();
 
@@ -24,10 +26,29 @@ app.set('view engine', 'handlebars');
 //设置端口，这样可以在启动服务器前通过设置环境变量覆盖端口，如果发现不是监听的3000，检查是否设置了环境变量PORT
 app.set('port', process.env.PORT || 3000);
 
+//cookie
+app.use(require('cookie-parser')(credentials.cookieSecret));
+//session
+app.use(require('express-session')({
+    resave: false,
+    saveUninitialized: false,
+    secret: credentials.cookieSecret,
+}));
+
 //加载静态资源
 app.use(express.static(__dirname + '/public'));
 
+//处理表单body
 app.use(require('body-parser')());
+
+//flash即时消息
+app.use(function(req, res, next) {
+    //如果有即时消息，把它传到上下文中，然后清除它
+    res.locals.flash = req.session.flash;
+
+    delete req.session.flash;
+    next();
+})
 
 //测试，当查询字符串test=1时
 app.use(function(req, res, next) {
@@ -124,7 +145,56 @@ app.get('/newsletter', function(req, res) {
     });
 })
 
-//注册请求
+function NewsLetterSignup() {
+
+}
+
+NewsLetterSignup.prototype.save = function(cb) {
+    cb();
+}
+
+const VALID_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+app.post('/newsletter', function(req, res) {
+    const name = req.body.name || '';
+    const email = req.body.email || '';
+
+    //输入验证
+    if(!email.match(VALID_EMAIL_REGEX)) {
+        if(req.xhr) return res.json({error: 'Invalid name email address.'});
+        req.session.flash = {
+            type: 'danger',
+            intro: 'Validation error',
+            message: 'The email address you entered was not valid.'
+        };
+        return res.redirect(303, '/newsletter/archive');
+    }
+
+    new NewsLetterSignup({ name: name, email: email }).save(function(err) {
+        if(err) {
+            if(req.xhr) return res.json({error: 'Database error'});
+            req.session.flash = {
+				type: 'danger',
+				intro: 'Database error!',
+				message: 'There was a database error; please try again later.',
+			};
+			return res.redirect(303, '/newsletter/archive');
+        }
+        if(req.xhr) return res.json({ success: true });
+		req.session.flash = {
+			type: 'success',
+			intro: 'Thank you!',
+			message: 'You have now been signed up for the newsletter.',
+		};
+		return res.redirect(303, '/newsletter/archive');
+    })
+})
+
+app.get('/newsletter/archive', function(req, res){
+	res.render('newsletter/archive');
+});
+
+//注册请求,从newsletter过来的表单请求,后面不在使用
 app.post('/process', function(req, res) {
     //express处理表单
     // res.locals.name = req.body.name;
