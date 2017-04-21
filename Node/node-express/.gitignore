@@ -3,3 +3,7 @@ node_modules
 npm-debug.log
 
 credentials
+
+log
+
+data
