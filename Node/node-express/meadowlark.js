@@ -253,7 +253,18 @@ app.get('/api/attraction/:id', function(req, res){
     });
 });
 
+// authentication
+const auth = require('./lib/auth')(app, {
+    providers: credentials.authProviders,
+    successRedirect: '/account',
+    failureRedirect: '/unauthorized',
+})
 
+//链入了Passport中间件
+auth.init();
+
+//指定auth路由
+auth.registerRoutes();
 
 //错误页面
 app.get('/error', function(req, res) {
