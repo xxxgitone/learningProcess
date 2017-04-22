@@ -196,6 +196,64 @@ app.use(function(req, res, next) {
 // add routes
 require('./routes.js')(app);
 
+//api
+const Attraction = require('./models/attraction');
+
+// const Rest = require('connect-rest')
+
+// // API configuration
+// const apiOptions = {
+//     context: '/api'
+// };
+
+// const rest = Rest.create( apiOptions )
+
+app.get('/api/attractions', function(req, res){
+    Attraction.find({ approved: true }, function(err, attractions){
+        console.log(attractions);
+        if(err) return res.send(500, 'Error occ');
+        res.json(attractions.map(function(a){
+            return {
+                name: a.name,
+                id: a._id,
+                description: a.description,
+                location: a.location,
+            };
+        }));
+    });
+});
+
+app.post('/api/attraction', function(req, res){
+    console.log('log')
+    var a = new Attraction({
+        name: req.body.name,
+        description: req.body.description,
+        location: { lat: req.body.lat, lng: req.body.lng },
+        history: {
+            event: 'created',
+            email: req.body.email,
+            date: new Date(),
+        },
+        approved: req.body.approved || false,
+    });
+    a.save(function(err, a){
+        if(err) return res.send(500, 'Error occ')
+        res.json({ id: a._id });
+    }); 
+});
+
+app.get('/api/attraction/:id', function(req, res){
+    Attraction.findById(req.params.id, function(err, a){
+        if(err) return res.send(500, 'Error occ');
+        res.json({
+            name: a.name,
+            description: a.description,
+            location: a.location,
+        });
+    });
+});
+
+
 
 //错误页面
 app.get('/error', function(req, res) {
