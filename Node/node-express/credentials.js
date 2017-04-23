@@ -16,8 +16,8 @@ module.exports = {
     authProviders: {
         facebook: {
             development: {
-                appId: '147315879136755',
-                appSecret: 'a80621cc5fef458276d9b9ac7ce95981'
+                appId: '147314099136933',
+                appSecret: '59b4153675b13942bf5e1dd58d8d0d17'
             }
         }
     }

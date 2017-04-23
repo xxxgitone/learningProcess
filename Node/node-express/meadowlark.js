@@ -266,6 +266,10 @@ auth.init();
 //指定auth路由
 auth.registerRoutes();
 
+app.get('/unauthorized', function(req, res) {
+	res.status(403).render('unauthorized');
+});
+
 //错误页面
 app.get('/error', function(req, res) {
     res.render('error');
