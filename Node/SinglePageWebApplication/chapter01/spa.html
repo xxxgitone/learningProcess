@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       body {
+           width: 100%;
+           height: 100%;
+           overflow: hidden;
+           background-color: #777;
+       }
+
+       #spa {
+           position: absolute;
+           top: 8px;
+           left: 8px;
+           bottom: 8px;
+           right: 8px;
+           border-radius: 8px 8px 0 8px;
+           background-color: #fff;
+       }
+
+       .spa-slider {
+           position: absolute;
+           bottom: 0;
+           right: 2px;
+           height: 16px;
+           width: 300px;
+           cursor: pointer;
+           border-radius: 8px 0 0 0;
+           background-color: #f00;
+       }
+    </style>
+    <script
+    src="https://code.jquery.com/jquery-1.9.1.min.js"
+    integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ="
+    crossorigin="anonymous"></script>
+    <script>
+        var spa = (function( $ ) {
+            var configMap = {
+                extended_height: 434,
+                extended_title: 'Click to retract',
+                retract_height: 16,
+                retract_title: 'Click to extend',
+                template_html: '<div class="spa-slider"><\/div>'
+            };
+            var $chatSlider;
+
+            var toggleSlider = function() {
+                var slider_height = $chatSlider.height();
+
+                if(slider_height === configMap.retract_height) {
+                    $chatSlider.animate({ height: configMap.extended_height })
+                        .attr('title', configMap.extended_title);
+                    return true; 
+                } else if(slider_height === configMap.extended_height) {
+                    $chatSlider.animate({ height: configMap.retract_height })
+                        .attr('title', configMap.retract_title)
+                    return true;
+                }
+
+                return false;
+            }
+
+            var onClickSlider = function( event ) {
+                toggleSlider();
+                return false;
+            }
+
+            var initModule = function( $container ) {
+                $container.html(configMap.template_html);
+
+                $chatSlider = $container.find( '.spa-slider' );
+
+                $chatSlider.attr('title', configMap.retract_title)
+                    .click( onClickSlider );
+                return true;
+            }
+
+            return {
+                initModule: initModule
+            }
+        })(jQuery);
+
+        jQuery(document).ready(function() {
+            spa.initModule( jQuery('#spa'));
+        })
+    </script>
+</head>
+<body>
+    <div id="spa">
+        <div class="spa-slider"></div>
+    </div>
+</body>
+</html>
