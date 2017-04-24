@@ -35,7 +35,7 @@ module.exports = function(app, options){
                 //将ID添加一个前缀，目的是避免冲突（可能性小），再者可以看到用户是用什么验证方式
 				clientID: config.facebook[env].appId,
 				clientSecret: config.facebook[env].appSecret,
-				callbackURL: 'http://localhost:3000/auth/facebook/callback',
+				callbackURL: (options.baseUrl || '') + '/auth/facebook/callback',
 			}, function(accessToken, refreshToken, profile, done){
 				var authId = 'facebook:' + profile.id;
 				User.findOne({ authId: authId }, function(err, user){
@@ -62,16 +62,30 @@ module.exports = function(app, options){
 
 		registerRoutes: function(){
 			//注册facebook路由
+			// app.get('/auth/facebook', function(req, res, next){
+			// 	passport.authenticate('facebook', {
+			// 		callbackURL: '/auth/facebook/callback?redirect=' + encodeURIComponent(req.query.redirect)
+			// 	})(req, res, next);
+			// });
+			// app.get('/auth/facebook/callback', passport.authenticate('facebook', 
+			// 	{ failureRedirect: options.failureRedirect }),
+			// 	function(req, res){
+            //         //只有认证成功才能到达这里
+			// 		res.redirect(303, req.query.redirect || options.successRedirect);
+			// 	}
+			// );
+
 			app.get('/auth/facebook', function(req, res, next){
 				if(req.query.redirect) req.session.authRedirect = req.query.redirect;
 				passport.authenticate('facebook')(req, res, next);
 			});
+
 			app.get('/auth/facebook/callback', passport.authenticate('facebook', 
 				{ failureRedirect: options.failureRedirect }),
 				function(req, res){
-                    const redirect = req.session.authRedirect;
+					// we only get here on successful authentication
+					var redirect = req.session.authRedirect;
 					if(redirect) delete req.session.authRedirect;
-                    //只有认证成功才能到达这里
 					res.redirect(303, redirect || options.successRedirect);
 				}
 			);

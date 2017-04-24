@@ -253,21 +253,26 @@ app.get('/api/attraction/:id', function(req, res){
     });
 });
 
-// authentication
-const auth = require('./lib/auth')(app, {
-    providers: credentials.authProviders,
-    successRedirect: '/account',
-    failureRedirect: '/unauthorized',
-})
-
-//链入了Passport中间件
+var auth = require('./lib/auth.js')(app, {
+	baseUrl: process.env.BASE_URL,
+	providers: credentials.authProviders,
+	successRedirect: '/account',
+	failureRedirect: '/unauthorized',
+});
+// auth.init() links in Passport middleware:
 auth.init();
 
-//指定auth路由
+// now we can specify our auth routes:
 auth.registerRoutes();
 
 app.get('/unauthorized', function(req, res) {
 	res.status(403).render('unauthorized');
+});
+
+// customer routes
+
+app.get('/account', function(req, res){
+	res.render('account', { username: req.user.name });
 });
 
 //错误页面
