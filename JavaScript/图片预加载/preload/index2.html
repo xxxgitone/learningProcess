@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>QQ表情</title>
+    <style>
+      body, p, ul, li {
+          padding: 0;
+          margin:0;
+      }
+      body {
+          background-color: #eee;
+      }
+
+      a {
+          text-decoration: none;
+      }
+      li {
+          list-style-type: none;
+      }
+
+      .box {
+          margin: 150px 0 0 200px;
+      }
+
+      #face-btn {
+          width: 30px;
+          height: 30px;
+          display: inline-block;
+          background: url(img/face.png) no-repeat center / cover;
+          /*background-size: cover;*/
+          color: #333;
+          text-indent: 30px;
+      }
+
+      #face-btn:hover {
+          background: url(img/face1.png) no-repeat center / cover;
+      }
+      .panel {
+          width: 390px;
+          padding: 2px;
+          border: 1px solid #ccc;
+          background-color: #fff;
+          display: none;
+      }
+      .loading {
+          text-align: center;
+      }
+
+      .list li {
+          display: inline-block;
+          width: 24px;
+          height: 24px;
+          border: 1px solid #fff;
+          margin-bottom: 5px;
+          cursor: pointer;
+      }
+      .list li:hover {
+          border-color: #06c;
+      }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="box">
+        <a href="javascript:;" id="face-btn"></a>
+        <div class="panel">
+            <p class="loading">表情加载中，请稍后...</p>
+            <!--<ul class="list">-->
+                <!--li*75>img[src="face/QQ/$.gif"]-->
+                <!--<li><img src="face/QQ/1.gif" alt=""></li>
+                <li><img src="face/QQ/2.gif" alt=""></li>
+                <li><img src="face/QQ/3.gif" alt=""></li>
+                <li><img src="face/QQ/4.gif" alt=""></li>
+                <li><img src="face/QQ/5.gif" alt=""></li>
+                <li><img src="face/QQ/6.gif" alt=""></li>
+                <li><img src="face/QQ/7.gif" alt=""></li>
+                <li><img src="face/QQ/8.gif" alt=""></li>
+                <li><img src="face/QQ/9.gif" alt=""></li>
+                <li><img src="face/QQ/10.gif" alt=""></li>
+                <li><img src="face/QQ/11.gif" alt=""></li>
+                <li><img src="face/QQ/12.gif" alt=""></li>
+                <li><img src="face/QQ/13.gif" alt=""></li>
+                <li><img src="face/QQ/14.gif" alt=""></li>
+                <li><img src="face/QQ/15.gif" alt=""></li>
+                <li><img src="face/QQ/16.gif" alt=""></li>
+                <li><img src="face/QQ/17.gif" alt=""></li>
+                <li><img src="face/QQ/18.gif" alt=""></li>
+                <li><img src="face/QQ/19.gif" alt=""></li>
+                <li><img src="face/QQ/20.gif" alt=""></li>
+                <li><img src="face/QQ/21.gif" alt=""></li>
+                <li><img src="face/QQ/22.gif" alt=""></li>
+                <li><img src="face/QQ/23.gif" alt=""></li>
+                <li><img src="face/QQ/24.gif" alt=""></li>
+                <li><img src="face/QQ/25.gif" alt=""></li>
+                <li><img src="face/QQ/26.gif" alt=""></li>
+                <li><img src="face/QQ/27.gif" alt=""></li>
+                <li><img src="face/QQ/28.gif" alt=""></li>
+                <li><img src="face/QQ/29.gif" alt=""></li>
+                <li><img src="face/QQ/30.gif" alt=""></li>
+                <li><img src="face/QQ/31.gif" alt=""></li>
+                <li><img src="face/QQ/32.gif" alt=""></li>
+                <li><img src="face/QQ/33.gif" alt=""></li>
+                <li><img src="face/QQ/34.gif" alt=""></li>
+                <li><img src="face/QQ/35.gif" alt=""></li>
+                <li><img src="face/QQ/36.gif" alt=""></li>
+                <li><img src="face/QQ/37.gif" alt=""></li>
+                <li><img src="face/QQ/38.gif" alt=""></li>
+                <li><img src="face/QQ/39.gif" alt=""></li>
+                <li><img src="face/QQ/40.gif" alt=""></li>
+                <li><img src="face/QQ/41.gif" alt=""></li>
+                <li><img src="face/QQ/42.gif" alt=""></li>
+                <li><img src="face/QQ/43.gif" alt=""></li>
+                <li><img src="face/QQ/44.gif" alt=""></li>
+                <li><img src="face/QQ/45.gif" alt=""></li>
+                <li><img src="face/QQ/46.gif" alt=""></li>
+                <li><img src="face/QQ/47.gif" alt=""></li>
+                <li><img src="face/QQ/48.gif" alt=""></li>
+                <li><img src="face/QQ/49.gif" alt=""></li>
+                <li><img src="face/QQ/50.gif" alt=""></li>
+                <li><img src="face/QQ/51.gif" alt=""></li>
+                <li><img src="face/QQ/52.gif" alt=""></li>
+                <li><img src="face/QQ/53.gif" alt=""></li>
+                <li><img src="face/QQ/54.gif" alt=""></li>
+                <li><img src="face/QQ/55.gif" alt=""></li>
+                <li><img src="face/QQ/56.gif" alt=""></li>
+                <li><img src="face/QQ/57.gif" alt=""></li>
+                <li><img src="face/QQ/58.gif" alt=""></li>
+                <li><img src="face/QQ/59.gif" alt=""></li>
+                <li><img src="face/QQ/60.gif" alt=""></li>
+                <li><img src="face/QQ/61.gif" alt=""></li>
+                <li><img src="face/QQ/62.gif" alt=""></li>
+                <li><img src="face/QQ/63.gif" alt=""></li>
+                <li><img src="face/QQ/64.gif" alt=""></li>
+                <li><img src="face/QQ/65.gif" alt=""></li>
+                <li><img src="face/QQ/66.gif" alt=""></li>
+                <li><img src="face/QQ/67.gif" alt=""></li>
+                <li><img src="face/QQ/68.gif" alt=""></li>
+                <li><img src="face/QQ/69.gif" alt=""></li>
+                <li><img src="face/QQ/70.gif" alt=""></li>
+                <li><img src="face/QQ/71.gif" alt=""></li>
+                <li><img src="face/QQ/72.gif" alt=""></li>
+                <li><img src="face/QQ/73.gif" alt=""></li>
+                <li><img src="face/QQ/74.gif" alt=""></li>
+                <li><img src="face/QQ/75.gif" alt=""></li>
+            </ul>-->
+        </div>
+    </div>
+
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+    <script src="./preload.js"></script>
+    <script>
+        var $btn = $('#face-btn'),
+            $panel = $('.panel');
+        
+        var imgs = [];
+
+        for (var i = 0; i < 75; i++) {
+            imgs[i] = 'face/QQ/' + (i + 1) + '.gif'
+        }
+
+        var len = imgs.length;
+
+        $btn.on('click', function (e) {
+            e.stopPropagation();
+
+            $panel.show();
+
+            $.preload(imgs, {
+                all: function () {
+                    var html = '';
+
+                    html += '<ul class="list">'
+
+                    for(var i = 0; i < len; i++) {
+                        html += '<li><img src="' + imgs[i] + '" alt=""></li>'
+                    }
+
+                    html += '</ul>';
+
+                    //模拟延迟
+                    setTimeout(function () {
+                        $panel.html(html);
+                    }, 1000)
+                    
+                }
+            });
+
+            $(document).on('click', function () {
+                $panel.hide();
+            })
+        })
+
+    </script>
+   
+</body>
+</html>
