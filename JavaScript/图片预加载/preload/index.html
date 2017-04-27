@@ -6,23 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>图片预加载之无序加载</title>
     <style>
-    .box {
-        text-align: center;
-    }
-    .btn {
-        display: inline-block;
-        height: 30px;
-        line-height: 30px;
-        border: 1px solid #ccc;
-        background-color: #fff;
-        padding: 0 10px;
-        margin-right: 50px;
-        color: #333;
-        text-decoration: none;
-    }
-    .btn:hover {
-        background-color: #eee;
-    }
+        html, body {
+            height: 100%;
+        }
+        .box {
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 0 10px;
+            margin-right: 50px;
+            color: #333;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #eee;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #eee;
+            text-align: center;
+            font-size: 30px;
+        }
+        .progress {
+            margin-top: 300px;
+        }
     </style>
 </head>
 <body>
@@ -34,12 +51,70 @@
             <a href="javascript:;" class="btn" data-control="next">下一页</a>
         </p>
     </div>
+
+    <div class="loading">
+        <p class="progress">0%</p>
+    </div>
+
     <script
     src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
     crossorigin="anonymous"></script>
+    <script src="./preload.js"></script>
     <script>
-        var imgs = [
+        // var imgs = [
+        //     'http://i2.hoopchina.com.cn/user/308/15960308/13383588090.jpg',
+        //     'http://pic.nipic.com/2008-03-15/200831592625119_2.jpg',
+        //     'http://www.51pptmoban.com/d/file/2016/09/16/a55fcb02fea35f01c9d397d3d2060f20.jpg',
+        //     'http://www.51pptmoban.com/d/file/2016/09/16/98bfba98387cb68393e6172817d67cdc.jpg',
+        //     'http://img17.3lian.com/d/file/201703/18/ff8f4bc47481659f23dcb60b395b552d.jpg',
+        //     'http://img17.3lian.com/d/file/201703/18/49cf69337fc392230da062a991b50219.jpg',
+        //     'http://img17.3lian.com/d/file/201703/18/ff8f4bc47481659f23dcb60b395b552d.jpg'
+        // ]
+
+        // var index =0,
+        //     len = imgs.length,
+        //     count = 0,
+        //     $progress = $('.progress');
+
+        // $.each(imgs, function(i, src) {
+        //     var imgObj = new Image();
+
+        //     $(imgObj).on('load error', function() {
+        //         $progress.html(Math.round((count + 1) / len * 100) + '%');
+
+        //         if(count >= len - 1) {
+        //             $('.loading').hide();
+        //             document.title = '1/' + len;
+        //         }
+
+        //         count++;
+        //     });
+
+        //     imgObj.src = src;
+        // })
+        
+        // $('.btn').on('click', function() {
+        //     if($(this).data('control') === 'prev') {//上一张
+        //         // index--;
+        //         // if(index < 0) {
+        //         //     index =0;
+        //         // }
+
+        //         //上面语句可以写为
+        //         index = Math.max(0, --index);
+
+        //     } else {
+        //         index = Math.min(len -1, ++index);
+        //     }
+
+        //     document.title = (index + 1) + '/' + len;
+
+        //     $('#img').attr('src', imgs[index]);
+
+        // })
+
+         var imgs = [
             'http://i2.hoopchina.com.cn/user/308/15960308/13383588090.jpg',
             'http://pic.nipic.com/2008-03-15/200831592625119_2.jpg',
             'http://www.51pptmoban.com/d/file/2016/09/16/a55fcb02fea35f01c9d397d3d2060f20.jpg',
@@ -50,7 +125,20 @@
         ]
 
         var index =0,
-            len = imgs.length;
+            len = imgs.length,
+            $progress = $('.progress');
+
+
+        $.preload(imgs, {
+            each: function(count) {
+                $progress.html(Math.round((count + 1) / len * 100) + '%');
+            },
+            all: function() {
+                 $('.loading').hide();
+                document.title = '1/' + len;
+            }
+        })
+
         
         $('.btn').on('click', function() {
             if($(this).data('control') === 'prev') {//上一张
