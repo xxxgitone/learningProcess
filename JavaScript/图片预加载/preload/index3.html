@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片预加载之漫画有序加载</title>
+    <style>
+        .box {
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 0 10px;
+            margin-right: 50px;
+            color: #333;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <img src="http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/18_1690.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a" alt="pic" id="img" width="1200"/>
+
+        <p>
+            <a href="javascript:;" class="btn" data-control="prev">上一页</a>
+            <a href="javascript:;" class="btn" data-control="next">下一页</a>
+        </p>
+    </div>
+
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+    <script src="./preload.js"></script>
+    <script>
+        var imgs = [
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/18_1690.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a',
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/19_8847.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a',
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/20_6818.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a',
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/21_7583.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a',
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/22_6114.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a',
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/23_8862.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a',
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/24_5673.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a',
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/25_9609.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a',
+            'http://manhua1031.61-147-113-113.cdndm5.com/22/21445/478854/26_3123.jpg?cid=478854&key=73293219444899373a52a2ad67e0294a'
+        ];
+
+        var len = imgs.length,
+            // count = 0,
+            index = 0;
+
+            $.preload(imgs, {
+                order: 'ordered'
+            })
+
+            // load();
+
+        //有序预加载
+        // function load () {
+        //     var imgObj = new Image();
+
+        //     $(imgObj).on('load error', function () {
+
+        //         if (count >= len) {
+        //             //所有图片加载完毕
+        //         } else {
+        //             load();
+        //         }
+
+        //         count++;
+        //     })
+
+        //     imgObj.src = imgs[count];
+        // }
+
+        $('.btn').on('click', function() {
+            if($(this).data('control') === 'prev') {//上一张
+                index = Math.max(0, --index);
+
+            } else {
+                index = Math.min(len -1, ++index);
+            }
+
+            document.title = (index + 1) + '/' + len;
+
+            $('#img').attr('src', imgs[index]);
+
+        })
+      
+
+    </script>
+</body>
+</html>
