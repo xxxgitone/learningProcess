@@ -9,6 +9,8 @@
 
 本仓库用于记录后期的学习历程代码、笔记、案例以及收集的一些资料，方便查阅。路漫漫其修远兮，贵在坚持！
 
+网络资源多而杂，找到适合自己的才是最关键的。
+
 （内容再整理中，将努力抽出时间来整理。。。）
 
 ### 1. 墙外的世界
@@ -27,68 +29,62 @@
 * [知乎][9]
 * [stackoverflow][10]
 
+### 4. HTML
 
-## 1.HTML
-#### 视频
+* 入门当然是[W3C（基础）][11]
 
+### 5. CSS
 
-* 李炎恢HTML5第一季
-* 慕课网
+*  [HTML5与CSS3权威指南（上、下册） （第3版）][12]
+*  [CSS 实战手册（第四版）][13]
+* [响应式Web设计（有第二版）][14]
+* [CSS揭秘][15]
+	
 
-#### 书籍
-* HTML5与CSS3权威指南
+### 6.JavaScript
 
+* [JavaScript DOM 编程艺术][16]
+* [JavaScript 高级程序设计(第三版)][17]
+* [高性能的JavaScript][18]
+* [JavaScript语言精粹][19]
+* [JavaScript开发模式与开发实践][20]
+* [你不知道的JavaScript（上卷）][21]
+* [你不知道的JavaScript（中卷）][22]
+* [ES6 标准入门（第2版）][23]
 
-## 2.CSS
-> **视频**
+### 7 .jQuery
 
+* [锋利的jQuery][24]
 
-* 李炎恢HTML5第一季
-* 慕课网
+### 8 .BootStrap
 
-> **书籍**
+* [bootstrap中文网][25]
 
+### 9.React
 
-* HTML5与CSS3权威指南
+* [React 技术栈系列教程][26]
 
-## 3.JavaScript
-> **视频**
+### 7.webpack
 
+* [webpack中文网][27]
 
-* 李炎恢JavaScript第一季
-* 慕课网JavaScript深入浅出
-* 慕课网
+### 8.Vue
 
-> **书籍**
+* [vue.js][28]
+* [vue-router 2][29]
+* [vuex][30]
 
+### 9.node.js
 
-* JavaScript DOM 编程艺术
-* JavaScript 高级程序设计(第三版)
-* 高性能的JavaScript
-* JavaScript语言精粹
-* JavaScript开发模式与开发实践
+* [node与express开发][31]
+* [深入浅出Node.js][32]
 
-## 4.jQuery
-> **视频**
+### 10. HTTP
+* [图解HTTP][33]
 
-
-* 李炎恢jQuery 、jquery UI 、jquery easyui
-* 慕课网
-
-> **书籍**
-
-
-* 锋利的jQuery
-
-## 5.BootStrap
-> **视频**
-
-
-* 李炎恢Bootstrap
-* 慕课网
-
-
-##6.React
+### 11. GIT
+* [GitHub入门与实践][34]
+* [GIT教程][35]
 
 
   [1]: https://github.com/bannedbook/fanqiang
@@ -101,9 +97,28 @@
   [8]: https://segmentfault.com/
   [9]: https://www.zhihu.com/
   [10]: http://stackoverflow.com/
-
-
-## 6.React
-## 7.webpack
-## 8.Vue
-## 9.node.js
+  [11]: http://www.w3school.com.cn/
+  [12]: https://book.douban.com/subject/26644632/
+  [13]: https://book.douban.com/subject/26898555/
+  [14]: https://book.douban.com/subject/20390374/
+  [15]: https://book.douban.com/subject/26745943/
+  [16]: https://book.douban.com/subject/6038371/
+  [17]: https://book.douban.com/subject/10546125/
+  [18]: https://book.douban.com/subject/5362856/
+  [19]: https://book.douban.com/subject/11874748/
+  [20]: https://book.douban.com/subject/26382780/
+  [21]: https://book.douban.com/subject/26351021/
+  [22]: https://book.douban.com/subject/26854244/
+  [23]: https://book.douban.com/subject/26708954/
+  [24]: https://book.douban.com/subject/10792216/
+  [25]: http://www.bootcss.com/
+  [26]: http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html
+  [27]: https://doc.webpack-china.org/concepts/
+  [28]: https://cn.vuejs.org/v2/guide/
+  [29]: https://router.vuejs.org/zh-cn/
+  [30]: https://vuex.vuejs.org/zh-cn/
+  [31]: https://book.douban.com/subject/26301434/
+  [32]: https://book.douban.com/subject/25768396/
+  [33]: https://book.douban.com/subject/25863515/
+  [34]: https://book.douban.com/subject/26462816/
+  [35]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
