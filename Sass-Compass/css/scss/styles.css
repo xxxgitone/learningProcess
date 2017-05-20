@@ -1,0 +1,8 @@
+a {
+  color: red; }
+  a span {
+    color: blue; }
+    a span a {
+      color: black; }
+
+/*# sourceMappingURL=styles.css.map */
