@@ -1,13 +1,80 @@
-// Variables
-
-$deepBlue: #032f3e;
-$sectionHeading: 24px;
+@import "reset";
+@import  "variables";
+@import "mixins";
 
 #main-nav {
 	background: $deepBlue;
-}
+	ul {
+		width: 100%;
+		@include clearFix;
+	}
+	li {
+		float: left;
+		width: (100% / 6);
+		@include mQ(600px) {
+			width: 100%;
+		}
+	}
+	a {
+		color: $offWhite;
+		text-decoration: none;
+		padding: 16px;
+		display: block;
+		text-align: center;
+		&:hover {
+			background: lighten($deepBlue, 6);
+		}
+	}
+}// end #main-nav
 
 section h1 {
 	font-size: $sectionHeading;
 	color: $deepBlue;
+}
+
+.lead-banner {
+	@include banner;
+	text-align: right;
+}
+
+.lessons-banner {
+	@include banner;
+	li {
+		text-transform: uppercase;
+		font-size: 20px;
+		max-width: 500px;
+		margin: 60px 0;
+	}
+}
+
+#services {
+	padding-bottom: 30px;
+	li {
+		float: left;
+		box-sizing: border-box;
+		text-align: center;
+		width: (100% / 3);
+	}
+	img {
+		width:  60%;
+		margin: 20px 20%;
+	}
+	a {
+		text-decoration: none;
+		color: $deepBlue;
+		font-weight: bold;
+		&:hover {
+			color:  complement($deepBlue);
+		}
+	}
+	ul {
+		@include clearFix;
+	}
+}
+
+#projects li {
+	@include grid(4, 2%);
+	img {
+		width: 100%;
+	}
 }
