@@ -15,8 +15,6 @@ describe('Saving records', () => {
 			assert(char.isNew === false)
 			done()
 		})
-
-
 	})
 
 })

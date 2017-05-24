@@ -15,3 +15,11 @@ before((done) => {
 		console.log(`Connection error: ${error}`)
 	})
 })
+
+// Drop the characters collection before each test ,unique record
+beforeEach((done) => {
+	//Drop the collection
+	mongoose.connection.collections.mariochars.drop(() => {
+		done()
+	})
+})
