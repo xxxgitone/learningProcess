@@ -40,7 +40,7 @@ function scan () {
     elem.directive = []
     // attributes 属性返回指定节点的属性集合
     for (let attr of elem.attributes) {
-      if (attr.nodeName.indexOf('x-') >= 0) {
+      if (attr.nodeName.indexOf('q-') >= 0) {
         // 调用属性指令
         directive[attr.nodeName.slice(2)].call(elem, data[attr.nodeValue])
         elem.directive.push(attr.nodeName.slice(2))
@@ -52,5 +52,5 @@ function scan () {
 // 设置数据改变后扫描节点
 function ViewModelSet(key, value) {
   data[key] = value
-  scan ();
+  scan ()
 }
