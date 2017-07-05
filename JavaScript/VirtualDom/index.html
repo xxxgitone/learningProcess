@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Virtual DOM</title>
+    <script src="./element.js"></script>
+</head>
+<body>
+    <script>
+        var el = function (tagName, props, children) {
+            return new Element(tagName, props, children)
+        }
+
+        var ul = el('ul', {id: 'list'},[
+            el('li', {class: 'item'}, ['item 1']),
+            el('li', {class: 'item'}, ['item 2']),
+            el('li', {class: 'item'}, ['item 3'])       
+        ])
+
+        var ulRoot = ul.render()
+        document.body.appendChild(ulRoot)
+    </script>
+</body>
+</html>
