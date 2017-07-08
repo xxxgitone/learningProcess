@@ -4,7 +4,7 @@ function Queue () {
 
     // 添加新元素，新的项只能添加到队列末尾
     this.enqueue = function (element) {
-        items.push(items)
+        items.push(element)
     }
 
     // 移除
