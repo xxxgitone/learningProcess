@@ -126,6 +126,14 @@
 
 * [linux基础](http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html)
 * [linux命令大全](http://man.linuxde.net/)
+* [阿里云服务部署](https://github.com/xxxgitone/learningProcess/blob/master/linux/%E4%BA%91%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2.md)
+
+### 面试
+
+* [牛客网](https://www.nowcoder.com)
+* [leetcode](https://leetcode.com/)
+* [nodeschool](https://nodeschool.io/)
+* [前端开发面试题](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions)
 
 
 
