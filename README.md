@@ -1,5 +1,5 @@
 # 简介
-某大学本科生，专业信息管理与信息系统，基础课为C语言，技术课为Java，系统学过JavaSE，Javaweb，JavaEE。但是对前端非常感兴趣，这种及时化的东西更能激起我的兴趣。接触前端最初目的是为了对付Javaweb，在学习Javaweb过程中越来越想做出更加复杂的页面，激励着自己不断探索。再者也许是他们口中所说的前端简单，前端火爆，实则不然，入坑后才发现前端并不简单，这把技术之火越来越旺盛，但是市场却不见得。
+某大学本科生，专业信息管理与信息系统，但是对前端非常感兴趣，这种及时化的东西更能激起我的兴趣。接触前端最初目的是为了对付Javaweb，在学习Javaweb过程中越来越想做出更加复杂的页面，激励着自己不断探索。再者也许是他们口中所说的前端简单，前端火爆，实则不然，入坑后才发现前端并不简单，这把技术之火越来越旺盛，但是市场却不见得。
 
 面对前端日益更新的技术，自己也经常迷茫，迷茫自己是不是选错了方向，怀疑自己的学习方式是否正确，抛弃Java这个系统学过的技术，而选择去自学前端，是否真的值得。
 
@@ -35,6 +35,18 @@
 
 ### 5. CSS
 
+#### 文章
+
+* [CSS选择器](https://github.com/xxxgitone/learningProcess/blob/master/CSS/css%E9%80%89%E6%8B%A9%E7%AC%A6/css%E9%80%89%E6%8B%A9%E7%AC%A6.md)
+* [定位](https://github.com/xxxgitone/learningProcess/blob/master/CSS/%E5%AE%9A%E4%BD%8D/index.md)
+* [清除浮动](https://github.com/xxxgitone/learningProcess/blob/master/CSS/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/index.md)
+* [背景](https://github.com/xxxgitone/learningProcess/blob/master/CSS/%E8%83%8C%E6%99%AF/index.md)
+* [CSS单位px、em和rem的使用方法](https://github.com/xxxgitone/learningProcess/blob/master/CSS/%E5%8D%95%E4%BD%8D/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8px%E3%80%81em%E5%92%8Crem.md)
+* [flexbox基本用法](https://xxxgitone.github.io/2017/05/27/FlexBox%E5%BC%B9%E6%80%A7%E5%B8%83%E5%B1%80%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/)
+* [css实战技巧](https://github.com/xxxgitone/CSS_Skills)
+
+#### 书籍
+
 *  [HTML5与CSS3权威指南（上、下册） （第3版）][12]
 *  [CSS 实战手册（第四版）][13]
 * [响应式Web设计（有第二版）][14]
@@ -42,6 +54,23 @@
 	
 
 ### 6.JavaScript
+
+#### 文章
+
+* [Javascript模块化](https://github.com/xxxgitone/learningProcess/blob/master/JavaScript/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96/module.md)
+* [this、call和apply](https://github.com/xxxgitone/learningProcess/blob/master/JavaScript/%E5%89%96%E6%9E%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/%E5%85%B3%E4%BA%8Ethis%E3%80%81call%E5%92%8Capply/tca.md)
+* [闭包](https://github.com/xxxgitone/learningProcess/blob/master/JavaScript/%E5%89%96%E6%9E%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/%E9%97%AD%E5%8C%85%E5%92%8C%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/closure.md)
+* [高阶函数](https://github.com/xxxgitone/learningProcess/blob/master/JavaScript/%E5%89%96%E6%9E%90%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/%E9%97%AD%E5%8C%85%E5%92%8C%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0/func.md)
+* [JavaScript创建对象的七种方式](https://xxxgitone.github.io/2017/06/10/JavaScript%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%83%E7%A7%8D%E6%96%B9%E5%BC%8F/)
+* [JavaScript六种继承方式](https://xxxgitone.github.io/2017/06/12/JavaScript%E5%85%AD%E7%A7%8D%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/)
+* [一篇文章看懂_proto_和prototype的关系及区别](https://xxxgitone.github.io/2017/06/08/%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E7%9C%8B%E6%87%82-proto-%E5%92%8Cprototype%E7%9A%84%E5%85%B3%E7%B3%BB%E5%8F%8A%E5%8C%BA%E5%88%AB/)
+* js基础几个系列
+
+  * [前端基础进阶系列](http://www.jianshu.com/p/cd3fee40ef59)
+  * [深入理解JavaScript系列](http://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html)
+  * [js深入系列](https://github.com/mqyqingfeng/Blog)
+
+#### 书籍
 
 * [JavaScript DOM 编程艺术][16]
 * [JavaScript 高级程序设计(第三版)][17]
@@ -83,8 +112,21 @@
 * [图解HTTP][33]
 
 ### 11. GIT
+
+#### 文章
+
+* [Git常用操作及命令](https://xxxgitone.github.io/2017/05/25/Git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%8A%E5%91%BD%E4%BB%A4/)
+
+#### 书籍
+
 * [GitHub入门与实践][34]
 * [GIT教程][35]
+
+### Linux
+
+* [linux基础](http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html)
+* [linux命令大全](http://man.linuxde.net/)
+
 
 
   [1]: https://github.com/bannedbook/fanqiang
