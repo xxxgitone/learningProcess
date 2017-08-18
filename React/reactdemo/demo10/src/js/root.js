@@ -5,16 +5,24 @@ import PCIndex from './components/pc-index'
 import MobileIndex from './components/mobile-index'
 import 'antd/dist/antd.css'
 import MediaQuery from 'react-responsive'
+import PCNewsDetails from './components/pc-news-details'
+import MobileNewsDetails from './components/mobile-news-details'
 
 export default class Root extends Component{
   render(){
     return (
       <div>
         <MediaQuery query='(min-device-width: 1224px)'>
-          <PCIndex/>
+          <Router history={hashHistory}>
+            <Route path="/" component={PCIndex}></Route>
+            <Route path="/details/:uniquekey" component={PCNewsDetails}></Route>            
+          </Router>
         </MediaQuery>
         <MediaQuery query='(max-device-width: 1224px)'>
-          <MobileIndex/>
+          <Router history={hashHistory}>
+            <Route path="/" component={MobileIndex}></Route>
+            <Route path="/details/:uniquekey" component={MobileNewsDetails}></Route>            
+          </Router>
         </MediaQuery>
       </div>
     )

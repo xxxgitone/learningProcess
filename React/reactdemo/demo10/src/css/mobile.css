@@ -52,13 +52,13 @@ html{
 #mobileDetailsContainer .article-content .txt {
     font-size: 0.36rem;
 }
-#mobileDetailsContainer .ant-row{
+/* #mobileDetailsContainer .ant-row{
   margin-top: 20px;
-}
+} */
 
-.ucmobileList{
+/* .ucmobileList{
   margin-top: 60px;
-}
+} */
 
 
 .topbar{text-align: left !important; margin-bottom: 10px;background: #2db7f5;display:block;font-size:.32rem;max-width:1080px;height:.98rem;line-height:.98rem;padding:0 0 0 10px;box-sizing:border-box;font-size:0;-webkit-tap-highlight-color:rgba(0,0,0,0);position:fixed;width:7.5rem;z-index:10000;top:0}
