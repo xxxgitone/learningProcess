@@ -33,7 +33,15 @@ class PCHeader extends Component{
     this.handleClick = this.handleClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.callback = this.callback.bind(this)
+    this.logout = this.logout.bind(this)
   }
+
+  componentWillMount(){
+    if (localStorage.userid!='') {
+      this.setState({hasLogined:true})
+      this.setState({userNickName:localStorage.userNickName,userid:localStorage.userid})
+    }
+	}
 
   setModalVisible (value) {
     this.setState({modalVisible: value})
@@ -69,7 +77,9 @@ class PCHeader extends Component{
 		+ formData.r_confirmPassword, myFetchOptions)
 		.then(response => response.json())
 		.then(json => {
-			this.setState({userNickName: json.NickUserName, userid: json.UserId});
+      this.setState({userNickName: json.NickUserName, userid: json.UserId})
+      localStorage.userid= json.UserId
+			localStorage.userNickName = json.NickUserName
 		})
 		if (this.state.action=="login") {
 			this.setState({hasLogined:true})
@@ -77,6 +87,12 @@ class PCHeader extends Component{
 		message.success("请求成功！")
 		this.setModalVisible(false)
   }
+
+  logout () {
+		localStorage.userid = ''
+		localStorage.userNickName = ''
+		this.setState({hasLogined:false})
+	}
 
   render(){
     const {getFieldProps} = this.props.form
@@ -90,7 +106,7 @@ class PCHeader extends Component{
             <Button type="dashed" htmlType="button">个人中心</Button>
           </Link>
           &nbsp;&nbsp;
-          <Button type="ghost" htmlType="button">退出</Button>
+          <Button type="ghost" htmlType="button" onClick={this.logout}>退出</Button>
         </Menu.Item>
       : <Menu.Item key="register" className="register">
           <Icon type="appstore"/>注册/登录
