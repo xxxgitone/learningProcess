@@ -68,10 +68,10 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new ExtractTextPlugin('[name].[chunkhash:8].css'),
+    new ExtractTextPlugin('css/[name].[chunkhash:8].css'),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: '[name].[chunkhash:8].js'
+      filename: 'js/[name].[chunkhash:8].js'
     })
   ]
 }
