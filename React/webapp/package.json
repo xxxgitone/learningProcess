@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development && webpack-dev-server --config ./webpack.dev.js --progress --colors",
-    "build": "NODE_ENV=production && webpack --config ./webpack.pro.js"
+    "start": "NODE_ENV=development webpack-dev-server --config ./webpack.dev.js --progress --colors",
+    "build": "NODE_ENV=production webpack --config ./webpack.pro.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "extract-text-webpack-plugin": "^3.0.0",
     "open-browser-webpack-plugin": "0.0.5",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
@@ -26,7 +27,6 @@
     "postcss-loader": "^2.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "style-loader": "^0.18.2",
-    "transform-runtime": "0.0.0"
+    "style-loader": "^0.18.2"
   }
 }

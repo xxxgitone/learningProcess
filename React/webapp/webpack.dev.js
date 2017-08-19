@@ -18,8 +18,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['react', 'es2015'],
-            plugins: ['transform-runtime']
+            presets: ['react', 'es2015']
           }
         }
       },
