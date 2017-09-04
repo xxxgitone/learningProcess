@@ -94,25 +94,25 @@
 
 * [React 技术栈系列教程][26]
 
-### 7.webpack
+### 10.webpack
 
 * [webpack中文网][27]
 
-### 8.Vue
+### 11.Vue
 
 * [vue.js][28]
 * [vue-router 2][29]
 * [vuex][30]
 
-### 9.node.js
+### 12.node.js
 
 * [node与express开发][31]
 * [深入浅出Node.js][32]
 
-### 10. HTTP
+### 13. HTTP
 * [图解HTTP][33]
 
-### 11. GIT
+### 14. GIT
 
 #### 文章
 
@@ -123,13 +123,13 @@
 * [GitHub入门与实践][34]
 * [GIT教程][35]
 
-### Linux
+### 15. Linux
 
 * [linux基础](http://linuxtools-rst.readthedocs.io/zh_CN/latest/base/index.html)
 * [linux命令大全](http://man.linuxde.net/)
 * [阿里云服务部署](https://github.com/xxxgitone/learningProcess/blob/master/linux/%E4%BA%91%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2.md)
 
-### 面试
+### 16. 面试
 
 * [牛客网](https://www.nowcoder.com)
 * [leetcode](https://leetcode.com/)
