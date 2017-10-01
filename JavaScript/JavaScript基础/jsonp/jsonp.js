@@ -32,7 +32,8 @@ function jsonp (url) {
 
 		url += url.indexOf('?') > -1 ? '&' : '?'
 		const script = createScript(`${url}callback=${cbName}`)
-
+		
+		// IE script.onreadystatechange
 		script.onload = function () {
 			script.onload = null
 			if (script.parentNode) {
