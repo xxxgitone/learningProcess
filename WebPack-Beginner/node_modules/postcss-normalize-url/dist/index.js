@@ -2,6 +2,10 @@
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _postcss = require('postcss');
 
 var _postcss2 = _interopRequireDefault(_postcss);
@@ -18,10 +22,6 @@ var _isAbsoluteUrl = require('is-absolute-url');
 
 var _isAbsoluteUrl2 = _interopRequireDefault(_isAbsoluteUrl);
 
-var _path = require('path');
-
-var _path2 = _interopRequireDefault(_path);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var multiline = /\\[\r\n]/;
@@ -34,18 +34,16 @@ function convert(url, options) {
     return _path2.default.normalize(url).replace(new RegExp('\\' + _path2.default.sep, 'g'), '/');
 }
 
-function transformNamespace(rule, opts) {
+function transformNamespace(rule) {
     rule.params = (0, _postcssValueParser2.default)(rule.params).walk(function (node) {
         if (node.type === 'function' && node.value === 'url' && node.nodes.length) {
             node.type = 'string';
             node.quote = node.nodes[0].quote || '"';
             node.value = node.nodes[0].value;
         }
-
         if (node.type === 'string') {
-            node.value = convert(node.value.trim(), opts);
+            node.value = node.value.trim();
         }
-
         return false;
     }).toString();
 }
@@ -57,7 +55,7 @@ function transformDecl(decl, opts) {
         }
 
         var url = node.nodes[0];
-        var escaped = undefined;
+        var escaped = void 0;
 
         node.before = node.after = '';
         url.value = url.value.trim().replace(multiline, '');
@@ -66,7 +64,7 @@ function transformDecl(decl, opts) {
             return false;
         }
 
-        if (! ~url.value.indexOf('chrome-extension')) {
+        if (!~url.value.indexOf('chrome-extension')) {
             url.value = convert(url.value, opts);
         }
 
@@ -96,7 +94,7 @@ module.exports = _postcss2.default.plugin('postcss-normalize-url', function (opt
             if (node.type === 'decl') {
                 return transformDecl(node, opts);
             } else if (node.type === 'atrule' && node.name === 'namespace') {
-                return transformNamespace(node, opts);
+                return transformNamespace(node);
             }
         });
     };

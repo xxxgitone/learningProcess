@@ -13,10 +13,6 @@ var _getArguments = require('../lib/getArguments');
 
 var _getArguments2 = _interopRequireDefault(_getArguments);
 
-var _getParsed = require('../lib/getParsed');
-
-var _getParsed2 = _interopRequireDefault(_getParsed);
-
 var _getValue = require('../lib/getValue');
 
 var _getValue2 = _interopRequireDefault(_getValue);
@@ -25,15 +21,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // box-shadow: inset? && <length>{2,4} && <color>?
 
-function normalizeBoxShadow(decl) {
-    if (decl.prop !== 'box-shadow') {
-        return;
-    }
-    var parsed = (0, _getParsed2.default)(decl);
-    if (parsed.nodes.length < 2) {
-        return;
-    }
-
+function normalizeBoxShadow(decl, parsed) {
     var args = (0, _getArguments2.default)(parsed);
     var abort = false;
 
@@ -44,7 +32,7 @@ function normalizeBoxShadow(decl) {
             color: []
         };
         arg.forEach(function (node) {
-            if (node.type === 'comment' || node.type === 'function' && (node.value === 'var' || ~node.value.indexOf('calc'))) {
+            if (node.type === 'function' && ~node.value.indexOf('calc')) {
                 abort = true;
                 return;
             }

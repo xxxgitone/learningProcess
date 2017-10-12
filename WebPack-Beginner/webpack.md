@@ -73,7 +73,7 @@ WebPack可以看做是模块打包机：它做的事情是，分析你的项目�
 
 	* 安装Babel的loader以支持ES6语法
 
-	 		npm install babel-core babel-loader babel-preset-es2015 babel-preset-react --save-dev
+	 		npm install babel-core babel-loader babel-preset-env babel-preset-react --save-dev
 
 	*	配置`webpack.config.js`
 

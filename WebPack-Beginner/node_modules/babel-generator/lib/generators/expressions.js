@@ -13,6 +13,7 @@ exports.ThisExpression = ThisExpression;
 exports.Super = Super;
 exports.Decorator = Decorator;
 exports.CallExpression = CallExpression;
+exports.Import = Import;
 exports.EmptyStatement = EmptyStatement;
 exports.ExpressionStatement = ExpressionStatement;
 exports.AssignmentPattern = AssignmentPattern;
@@ -20,10 +21,6 @@ exports.AssignmentExpression = AssignmentExpression;
 exports.BindExpression = BindExpression;
 exports.MemberExpression = MemberExpression;
 exports.MetaProperty = MetaProperty;
-
-var _isNumber = require("lodash/isNumber");
-
-var _isNumber2 = _interopRequireDefault(_isNumber);
 
 var _babelTypes = require("babel-types");
 
@@ -34,8 +31,6 @@ var _node = require("../node");
 var n = _interopRequireWildcard(_node);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function UnaryExpression(node) {
   if (node.operator === "void" || node.operator === "delete" || node.operator === "typeof") {
@@ -142,6 +137,10 @@ function CallExpression(node) {
   this.token(")");
 }
 
+function Import() {
+  this.word("import");
+}
+
 function buildYieldAwait(keyword) {
   return function (node) {
     this.word(keyword);
@@ -173,6 +172,8 @@ function ExpressionStatement(node) {
 
 function AssignmentPattern(node) {
   this.print(node.left, node);
+  if (node.left.optional) this.token("?");
+  this.print(node.left.typeAnnotation, node);
   this.space();
   this.token("=");
   this.space();
@@ -219,7 +220,7 @@ function MemberExpression(node) {
   }
 
   var computed = node.computed;
-  if (t.isLiteral(node.property) && (0, _isNumber2.default)(node.property.value)) {
+  if (t.isLiteral(node.property) && typeof node.property.value === "number") {
     computed = true;
   }
 

@@ -130,6 +130,14 @@ var _filterOptimiser = require('./lib/filterOptimiser');
 
 var _filterOptimiser2 = _interopRequireDefault(_filterOptimiser);
 
+var _normalizeString = require('./lib/normalizeString');
+
+var _normalizeString2 = _interopRequireDefault(_normalizeString);
+
+var _normalizeUnicode = require('./lib/normalizeUnicode');
+
+var _normalizeUnicode2 = _interopRequireDefault(_normalizeUnicode);
+
 var _reduceDisplayValues = require('./lib/reduceDisplayValues');
 
 var _reduceDisplayValues2 = _interopRequireDefault(_reduceDisplayValues);
@@ -154,12 +162,9 @@ var _styleCache = require('./lib/styleCache');
 
 var _styleCache2 = _interopRequireDefault(_styleCache);
 
-var _warnOnce = require('./lib/warnOnce');
-
-var _warnOnce2 = _interopRequireDefault(_warnOnce);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// Processors
 var processors = {
     postcssFilterPlugins: function postcssFilterPlugins() {
         return (0, _postcssFilterPlugins3.default)({ silent: true });
@@ -181,6 +186,8 @@ var processors = {
     postcssMinifyParams: _postcssMinifyParams2.default,
     postcssNormalizeCharset: _postcssNormalizeCharset2.default,
     postcssDiscardOverridden: _postcssDiscardOverridden2.default,
+    normalizeString: _normalizeString2.default,
+    normalizeUnicode: _normalizeUnicode2.default,
     // minify-font-values should be run before discard-unused
     postcssMinifyFontValues: _postcssMinifyFontValues2.default,
     postcssDiscardUnused: _postcssDiscardUnused2.default,
@@ -201,13 +208,6 @@ var processors = {
     postcssUniqueSelectors: _postcssUniqueSelectors2.default,
     styleCache: _styleCache2.default
 };
-
-/**
- * Deprecation warnings
- */
-
-// Processors
-
 
 var defaultOptions = {
     autoprefixer: {
@@ -233,6 +233,7 @@ var safeOptions = {
     },
     postcssReduceIdents: {
         counterStyle: false,
+        gridTemplate: false,
         keyframes: false
     },
     postcssNormalizeUrl: {
@@ -254,17 +255,28 @@ var cssnano = _postcss2.default.plugin('cssnano', function () {
 
     var safe = options.isSafe;
     var proc = (0, _postcss2.default)();
+    var warnings = [];
 
     if (typeof options.fontFamily !== 'undefined' || typeof options.minifyFontWeight !== 'undefined') {
-        (0, _warnOnce2.default)('The fontFamily & minifyFontWeight options have been ' + 'consolidated into minifyFontValues, and are now deprecated.');
+        warnings.push('The fontFamily & minifyFontWeight options have been ' + 'consolidated into minifyFontValues, and are now deprecated.');
         if (!options.minifyFontValues) {
             options.minifyFontValues = options.fontFamily;
         }
     }
 
     if (typeof options.singleCharset !== 'undefined') {
-        (0, _warnOnce2.default)('The singleCharset option has been renamed to ' + 'normalizeCharset, and is now deprecated.');
+        warnings.push('The singleCharset option has been renamed to ' + 'normalizeCharset, and is now deprecated.');
         options.normalizeCharset = options.singleCharset;
+    }
+
+    if (warnings.length) {
+        proc.use(_postcss2.default.plugin('cssnano', function () {
+            return function (css, result) {
+                return warnings.forEach(function (w) {
+                    return result.warn(w);
+                });
+            };
+        }));
     }
 
     Object.keys(processors).forEach(function (plugin) {

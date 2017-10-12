@@ -1,9 +1,3 @@
 "use strict";
 
-exports.__esModule = true;
-
-exports.default = function () {
-  return require("./visit");
-};
-
-module.exports = exports["default"];
+module.exports = require("regenerator-transform");

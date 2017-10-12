@@ -1,48 +1,54 @@
-var webpack=require('webpack');
+const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-module.exports={
-	devtool: 'eval-source-map',//配置生成Source Maps，选择合适的选项
-	entry:  __dirname + "/app/main.js",//已多次提及的唯一入口文件
+module.exports = {
+	entry: './app/index.js',
 	output: {
-	    path: __dirname + "/public",//打包后的文件存放的地方,
-	    							//“__dirname”是node.js中的一个全局变量，它指向当前执行脚本所在的目录
-	    filename: "bundle.js"//打包后输出文件的文件名
-  	},
+		// 必须使用绝对路径，输出文件夹
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'bundle.js', // 打包后输出的文件的名字,
+		publicPath: '/dist/' // 资源文件目录
+	},
+	module: {
+		rules: [
+			{
+				test: /\.js$/,
+				use: 'babel-loader',
+				exclude: '/node_modules/'
+			},
+			{
+				test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							// 限制图片大小为10000B，小于限制会将图片转换成base64格式
+							limit: 10000,
+							// 超出限制，创建的文件格式
+              // dist/images/[图片名].[hash].[图片格式]
+							name: 'images/[name].[hash].[ext]'
+						}
+					}
+				]
+			},
+			{
+				test: /\.css$/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [{
+						loader: 'css-loader',
+						options: {
+							module: true
+						}
+					}]
+				})
+			}
+		]
+	},
 
-  	//loader功能
-  	module: {//在配置文件里添加JSON loader
-	    loaders: [
-	      {
-	        test: /\.json$/,
-	        loader: "json"
-	      },
-	      {
-	        test: /\.js$/,
-	        exclude: /node_modules/,
-	        loader: 'babel'//在webpack的module部分的loaders里进行配置即可
-      	  },
-      	  {
-	        test: /\.css$/,
-	        loader: 'style!css?modules!postcss'//添加对样式表的处理，！在于使同一文件能够使用不同类型的loader
-      	  }
-	    ]
-  	},
-
-  	postcss: [
-    	require('autoprefixer')//调用autoprefixer插件
-  	],
-
-  	//添加插件
-  	plugins: [
-    	new webpack.BannerPlugin("Copyright Flying Unicorns inc.")//在这个数组中new一个就可以了
-  	],
-
-  	//本地服务器
-  	devServer: {
-	    contentBase: "./public",//本地服务器所加载的页面所在的目录
-	    colors: true,//终端中输出结果为彩色
-	    historyApiFallback: true,//不跳转
-	    inline: true//实时刷新
-	    
-  	} 
+	// 插件列表
+	plugins: [
+		// 输出文件路径
+		new ExtractTextPlugin('css/[name].[hash].css')
+	]
 }

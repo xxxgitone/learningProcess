@@ -1,82 +1,85 @@
 'use strict';
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+exports.__esModule = true;
 
 var _postcss = require('postcss');
 
-var _postcssValueParserLibUnit = require('postcss-value-parser/lib/unit');
+var _postcssValueParser = require('postcss-value-parser');
 
-var _postcssValueParserLibUnit2 = _interopRequireDefault(_postcssValueParserLibUnit);
+var _stylehacks = require('stylehacks');
 
-var _clone = require('../clone');
+var _genericMerge = require('../genericMerge');
 
-var _clone2 = _interopRequireDefault(_clone);
+var _getValue = require('../getValue');
 
-var _getLastNode = require('../getLastNode');
+var _getValue2 = _interopRequireDefault(_getValue);
 
-var _getLastNode2 = _interopRequireDefault(_getLastNode);
+var _insertCloned = require('../insertCloned');
 
-var wc = ['column-width', 'column-count'];
+var _insertCloned2 = _interopRequireDefault(_insertCloned);
 
-exports['default'] = {
-    explode: function explode(rule) {
-        rule.walkDecls('columns', function (decl) {
-            var values = _postcss.list.space(decl.value).sort();
-            if (values.length === 1) {
-                values.push('auto');
-            }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-            values.forEach(function (value, i) {
-                var name = 'column-count';
+var properties = ['column-width', 'column-count'];
+var auto = 'auto';
 
-                if (value === 'auto') {
-                    name = i === 0 ? 'column-width' : 'column-count';
-                } else if ((0, _postcssValueParserLibUnit2['default'])(value).unit !== '') {
-                    name = 'column-width';
-                }
+/**
+ * Normalize a columns shorthand definition. Both of the longhand
+ * properties' initial values are 'auto', and as per the spec,
+ * omitted values are set to their initial values. Thus, we can
+ * remove any 'auto' definition when there are two values.
+ *
+ * Specification link: https://www.w3.org/TR/css3-multicol/
+ */
 
-                var prop = (0, _clone2['default'])(decl);
-                prop.prop = name;
-                prop.value = value;
-                rule.insertAfter(decl, prop);
-            });
-            decl.remove();
-        });
-    },
-    merge: function merge(rule) {
-        var decls = rule.nodes.filter(function (node) {
-            return node.prop && ~wc.indexOf(node.prop);
-        });
-
-        var _loop = function () {
-            var lastNode = decls[decls.length - 1];
-            var props = decls.filter(function (node) {
-                return node.important === lastNode.important;
-            });
-            var values = wc.map(function (prop) {
-                return (0, _getLastNode2['default'])(props, prop).value;
-            });
-            if (values.length > 1 && values[0] === values[1]) {
-                values.pop();
-            }
-            var shorthand = (0, _clone2['default'])(lastNode);
-            shorthand.prop = 'columns';
-            shorthand.value = values.join(' ');
-            rule.insertAfter(lastNode, shorthand);
-            props.forEach(function (prop) {
-                return prop.remove();
-            });
-            decls = decls.filter(function (node) {
-                return ! ~props.indexOf(node);
-            });
-        };
-
-        while (decls.length) {
-            _loop();
-        }
+function normalize(values) {
+    if (values[0] === auto) {
+        return values[1];
     }
+    if (values[1] === auto) {
+        return values[0];
+    }
+    return values.join(' ');
+}
+
+function explode(rule) {
+    if (rule.nodes.some(_stylehacks.detect)) {
+        return false;
+    }
+    rule.walkDecls('columns', function (decl) {
+        var values = _postcss.list.space(decl.value);
+        if (values.length === 1) {
+            values.push(auto);
+        }
+
+        values.forEach(function (value, i) {
+            var prop = properties[1];
+
+            if (value === auto) {
+                prop = properties[i];
+            } else if ((0, _postcssValueParser.unit)(value).unit) {
+                prop = properties[0];
+            }
+
+            (0, _insertCloned2.default)(rule, decl, {
+                prop: prop,
+                value: value
+            });
+        });
+        decl.remove();
+    });
+}
+
+var merge = (0, _genericMerge.genericMergeFactory)({
+    prop: 'columns',
+    properties: properties,
+    value: function value(rules) {
+        return normalize(rules.map(_getValue2.default));
+    }
+});
+
+exports.default = {
+    explode: explode,
+    merge: merge
 };
 module.exports = exports['default'];

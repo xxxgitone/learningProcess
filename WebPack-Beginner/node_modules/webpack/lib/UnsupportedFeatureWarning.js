@@ -2,13 +2,20 @@
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
 */
-function UnsupportedFeatureWarning(module, message) {
-	Error.call(this);
-	Error.captureStackTrace(this, UnsupportedFeatureWarning);
-	this.name = "UnsupportedFeatureWarning";
-	this.message = message;
-	this.origin = this.module = module;
-}
-module.exports = UnsupportedFeatureWarning;
+"use strict";
 
-UnsupportedFeatureWarning.prototype = Object.create(Error.prototype);
+const WebpackError = require("./WebpackError");
+
+class UnsupportedFeatureWarning extends WebpackError {
+	constructor(module, message) {
+		super();
+
+		this.name = "UnsupportedFeatureWarning";
+		this.message = message;
+		this.origin = this.module = module;
+
+		Error.captureStackTrace(this, this.constructor);
+	}
+}
+
+module.exports = UnsupportedFeatureWarning;

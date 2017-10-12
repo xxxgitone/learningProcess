@@ -10,8 +10,8 @@ var _postcssValueParser2 = _interopRequireDefault(_postcssValueParser);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getParsed(decl) {
-    var value = decl.value;
-    var raws = decl.raws;
+    var value = decl.value,
+        raws = decl.raws;
 
     if (raws && raws.value && raws.value.raw) {
         value = raws.value.raw;

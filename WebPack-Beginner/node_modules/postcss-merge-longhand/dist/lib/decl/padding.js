@@ -1,14 +1,12 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-var _boxBase = require('./box-base');
+var _boxBase = require('./boxBase');
 
 var _boxBase2 = _interopRequireDefault(_boxBase);
 
-exports['default'] = (0, _boxBase2['default'])('padding');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _boxBase2.default)('padding');
 module.exports = exports['default'];

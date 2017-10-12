@@ -1,3 +1,8 @@
+# 2.0.2
+
+* Fixes an issue where properties with the `initial` keyword were being merged
+  (thanks to @holmari).
+
 # 2.0.1
 
 * Fixed a crash when the module was trying to retrieve declarations

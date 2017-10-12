@@ -645,8 +645,8 @@ function getValue(nested) {
                                 info: getInfo(), // FIXME: wrong position
                                 name: prefix + '+' + readUnicodeRange(true)
                             };
+                            break;
                         }
-                        break;
                     }
                 }
 
@@ -1079,7 +1079,14 @@ function getFunctionArguments(scope) {
                 break;
 
             case TokenType.Comma:
-                removeTrailingSpaces(argument.sequence);
+                if (argument) {
+                    removeTrailingSpaces(argument.sequence);
+                } else {
+                    args.insert(List.createItem({
+                        type: 'Argument',
+                        sequence: new List()
+                    }));
+                }
                 scanner.next();
                 readSC();
                 argument = null;

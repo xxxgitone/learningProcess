@@ -3,9 +3,9 @@
 exports.__esModule = true;
 
 exports.default = function (number, unit, _ref) {
-    var time = _ref.time;
-    var length = _ref.length;
-    var angle = _ref.angle;
+    var time = _ref.time,
+        length = _ref.length,
+        angle = _ref.angle;
 
     var value = dropLeadingZero(number) + (unit ? unit : '');
     var converted = void 0;

@@ -69,7 +69,7 @@ The following example will not be transformed in any way:
 }
 ```
 
-It works for `@keyframes`, `@counter-style` and custom `counter` values. See the
+It works for `@keyframes`, `@counter-style`, custom `counter` values and grid area definitions. See the
 [documentation][idents] for more information, or the [tests](test.js) for more
 examples.
 
@@ -107,6 +107,12 @@ Default: `true`
 
 Pass `false` to disable reducing `counter-style` rules and `list-style` and `system` declarations.
 
+##### gridTemplate
+
+Type: `boolean`  
+Default: `true`
+
+Pass `false` to disable reducing `grid-template`, `grid-area` and `grid-template-areas` declarations.
 
 ##### encoder
 
@@ -119,10 +125,16 @@ It receives two parameters:
   - A `String` with the node value.
   - A `Number` identifying the index of the occurrence.
 
-## Contributing
+## Contributors
 
-Pull requests are welcome. If you add functionality, then please add unit tests
-to cover it.
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+| [<img src="https://avatars.githubusercontent.com/u/1282980?v=3" width="100px;"/><br /><sub>Ben Briggs</sub>](http://beneb.info)<br />[💻](https://github.com/ben-eb/postcss-reduce-idents/commits?author=ben-eb) [📖](https://github.com/ben-eb/postcss-reduce-idents/commits?author=ben-eb) 👀 [⚠️](https://github.com/ben-eb/postcss-reduce-idents/commits?author=ben-eb) | [<img src="https://avatars.githubusercontent.com/u/5635476?v=3" width="100px;"/><br /><sub>Bogdan Chadkin</sub>](https://github.com/TrySound)<br />[⚠️](https://github.com/ben-eb/postcss-reduce-idents/commits?author=TrySound) [💻](https://github.com/ben-eb/postcss-reduce-idents/commits?author=TrySound) | [<img src="https://avatars.githubusercontent.com/u/13041?v=3" width="100px;"/><br /><sub>Guillermo Rauch</sub>](http://twitter.com/rauchg)<br />[💻](https://github.com/ben-eb/postcss-reduce-idents/commits?author=rauchg) [📖](https://github.com/ben-eb/postcss-reduce-idents/commits?author=rauchg) [⚠️](https://github.com/ben-eb/postcss-reduce-idents/commits?author=rauchg) | [<img src="https://avatars.githubusercontent.com/u/566536?v=3" width="100px;"/><br /><sub>Sylvain Pollet-Villard</sub>](https://github.com/sylvainpolletvillard)<br />[💻](https://github.com/ben-eb/postcss-reduce-idents/commits?author=sylvainpolletvillard) [📖](https://github.com/ben-eb/postcss-reduce-idents/commits?author=sylvainpolletvillard) [⚠️](https://github.com/ben-eb/postcss-reduce-idents/commits?author=sylvainpolletvillard) |
+| :---: | :---: | :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
 
 
 ## License

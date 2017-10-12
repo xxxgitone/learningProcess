@@ -45,10 +45,17 @@ See the [PostCSS documentation](https://github.com/postcss/postcss#usage) for
 examples for your environment.
 
 
-## Contributing
+## Contributors
 
-Pull requests are welcome. If you add functionality, then please add unit tests
-to cover it.
+Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+| [<img src="https://avatars.githubusercontent.com/u/1282980?v=3" width="100px;"/><br /><sub>Ben Briggs</sub>](http://beneb.info)<br />[💻](https://github.com/ben-eb/postcss-reduce-initial/commits?author=ben-eb) [📖](https://github.com/ben-eb/postcss-reduce-initial/commits?author=ben-eb) 👀 [⚠️](https://github.com/ben-eb/postcss-reduce-initial/commits?author=ben-eb) | [<img src="https://avatars.githubusercontent.com/u/551712?v=3" width="100px;"/><br /><sub>Chris Walker</sub>](http://thechriswalker.github.com/)<br />[🐛](https://github.com/ben-eb/postcss-reduce-initial/issues?q=author%3Athechriswalker) [💻](https://github.com/ben-eb/postcss-reduce-initial/commits?author=thechriswalker) |
+| :---: | :---: |
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors] specification. Contributions of
+any kind welcome!
 
 
 ## License
@@ -60,6 +67,8 @@ to cover it.
 
 MIT © [Ben Briggs](http://beneb.info)
 
+
+[all-contributors]: https://github.com/kentcdodds/all-contributors
 [ci]:      https://travis-ci.org/ben-eb/postcss-reduce-initial
 [deps]:    https://gemnasium.com/ben-eb/postcss-reduce-initial
 [npm]:     http://badge.fury.io/js/postcss-reduce-initial

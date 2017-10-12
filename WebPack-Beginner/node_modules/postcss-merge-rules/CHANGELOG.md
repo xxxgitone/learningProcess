@@ -1,3 +1,29 @@
+# 2.1.2
+
+* Performance improvements; no compatibility checking for simple selectors,
+  cached compatibility lookups, and early exit on compatibility mismatches
+  (thanks to @akx).
+
+# 2.1.1
+
+* Resolves an issue with `2.1.0` where `browserslist` was not being installed
+  correctly on older Node versions.
+
+# 2.1.0
+
+* Rules are now merged based on supported browsers, which uses `browserslist`
+  & `caniuse-api`. The browsers should be supplied by the standard means of
+  [configuring `browserslist`][browserslist], either using config files or
+  via environment variables.
+
+[browserslist]: https://github.com/ai/browserslist#config-file
+
+# 2.0.11
+
+* Resolves an issue where partially identical properties would be removed from
+  a rule erroneously; for example `color: #fff` would be removed if the other
+  rule contained `background-color: #fff`.
+
 # 2.0.10
 
 * Replaces the internal list of vendor prefixes with the `vendors` module

@@ -24,13 +24,13 @@ module.exports.time    = function(prefix){ return (prefix || '')                
 //  Helpers
 // ================================================
 function now(){
-    var time = new Date().getTime();
+    var time = Date.now();
     var last = now.last || time;
     return now.last = time > last ? time : last + 1;
 }
 
 function macHandler(error){
-    if(module.parent.uniqid_debug){
+    if(module.parent && module.parent.uniqid_debug){
         if(error) console.error('Info: No mac address - uniqid() falls back to uniqid.process().', error)
         if(pid == '') console.error('Info: No process.pid - uniqid.process() falls back to uniqid.time().')
     }
