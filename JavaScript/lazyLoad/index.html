@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.js"></script>
+</head>
+<body>
+  <div class="img-wrapper">
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i4/1741393998/TB1g7jHXK285uJjSZFwXXc.cVXa_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i3/TB1JFTfGVXXXXanaXXXXXXXXXXX_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i4/TB1UqncPVXXXXaxapXXXXXXXXXX_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i4/3037647334/TB1eVN2mwMPMeJjy1XbXXcwxVXa_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i2/2364056870/TB1J2nNe6qhSKJjSspnXXc79XXa_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i2/2232605098/TB18tQworsTMeJjSsziXXcdwXXa_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i3/1849635782/TB18G2tdjihSKJjy0FeXXbJtpXa_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i4/1741393998/TB1g7jHXK285uJjSZFwXXc.cVXa_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+    <img data-origin="http://img.alicdn.com/bao/uploaded/i4/TB1bEdVRVXXXXbpaXXXXXXXXXXX_!!0-item_pic.jpg_560x370Q50s50.jpg_.webp" src="http://iph.href.lu/370x370?text=优惠"/>
+  </div>
+  <script>
+    $(function () {
+      var windowHeight = $(window).height(),
+        windowScrllTop = 0,
+        $imgList = $('.img-wrapper img')
+      $(window).on('scroll', function() {
+        windowScrllTop = $(window).scrollTop()
+        lazyLoad()
+      })
+      lazyLoad()
+      function lazyLoad () {
+        $.each($imgList, function (index, item) {
+          var $img = $(item)
+          if ($img.attr('data-origin')) {
+            var offsetTop = $img.offset().top
+            console.log(offsetTop)
+            if (offsetTop + 100 <= windowHeight + windowScrllTop) {
+              $img.attr('src', $img.data('origin'))
+              $img.removeAttr('data-origin')
+            }
+          }
+        })
+      }
+    })
+  </script>
+</body>
+</html>
