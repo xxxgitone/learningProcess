@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-// 这是 packet.json 中 dependencies 下的
+// 这是 package.json 中 dependencies 下的
 const VENOR = [
   "faker",
   "lodash",
