@@ -1,5 +1,5 @@
 // 数组去重
-var array = [1, 1, '1', '1']
+var array = [1, 1, '1', '1', 'a', 'A']
 console.log(unique2(array))
 
 // 1.双层循环(兼容性好)
@@ -70,3 +70,63 @@ function unique3 (array, isSorted) {
   }
   return res
 }
+
+// 增加需求，字母大小写视为一致
+// 虽然我们可以先处理数组中的所有数据，比如将所有字母转换成小写，然后再传入unique函数汇总
+// 但是有没有方法可以省掉处理数组这一环节，直接在去重的循环中做
+// iteratee : 迭代、重复
+function unique4 (array, isSorted, iteratee) {
+  var res = []
+  var seen = []
+
+  for (var i = 0, len = array.length; i < len; i++) {
+    var value = array[i]
+    var computed = iteratee ? iteratee(value, i, array) : value
+    if (isSorted) {
+      if (!i || seen !== computed) {
+        res.push(value)
+      }
+      seen = computed
+    } else if (iteratee) {
+      if (seen.indexOf(computed) === -1) {
+        seen.push(computed)
+        res.push(value)
+      }
+    } else if (res.indexOf(value) === -1) {
+      res.push(value)
+    }
+  }
+  return res
+}
+
+unique4(array, false, function(item){
+  return typeof item == 'string' ? item.toLowerCase() : item
+})
+
+// ES5 filter方法，简化外层循环
+function unique5 (array) {
+  var res = array.filter(function(item, index, array) {
+    // array.indexOf会返回第一个找到的索引
+    return array.indexOf(item) === index
+  })
+  return res
+}
+
+// 排序去重
+function unique6 (array) {
+  return array.concat().sort().filter(function(item, index, array) {
+    return !index || item !== array[index - 1]
+  })
+}
+
+// ES6
+function unique7 (array) {
+  return Array.from(new Set(array))
+}
+
+// 简化
+function unique8 (array) {
+  return [...new Set(array)]
+}
+
+var unique9 = (a) => [...new Set(a)]
