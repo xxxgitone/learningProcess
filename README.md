@@ -136,6 +136,14 @@
 * [nodeschool](https://nodeschool.io/)
 * [前端开发面试题](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions)
 
+### 17. 近期想要深入和探索的方向或者技术
+
+* canvas
+* webGL
+* 数据可视化
+* python
+* 算法和数据结构
+
 
 
   [1]: https://github.com/bannedbook/fanqiang
