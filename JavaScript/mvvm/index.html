@@ -8,22 +8,30 @@
 </head>
 <body>
   <div id="app">
-    <h1>{{ song }}</h1>
-    <p>《{{ album.name }}》2005年11月发行的专辑</p>
-    <p>主打歌为{{ album.theme }}</p>
-    <p>作词人为{{ singer }}等人</p>
+    <input type="text" v-model="word">
+    <p>{{word}}</p>
+    <p>{{title}}</p>
+    <button v-on:click="sayHi">Change Model</button>
   </div>
+  <script src="./observer.js"></script>
+  <script src="./watcher.js"></script>
+  <script src="./compile.js"></script>
   <script src="./mvvm.js"></script>
   <script>
-    let vm = new MVVM({
+    const vm = new MVVM({
       el: '#app',
       data: {
-        song: '发如雪',
-        album: {
-          name: '十一月的肖邦',
-          theme: '夜曲'
-        },
-        singer: '周杰伦'
+        word: 'Hello World'
+      },
+      computed: {
+        title () {
+          return this.word
+        }
+      },
+      methods: {
+        sayHi: function () {
+          this.word = 'Hi, everybody'
+        }
       }
     })
   </script>
