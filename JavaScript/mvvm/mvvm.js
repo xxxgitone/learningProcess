@@ -12,9 +12,17 @@ function MVVM (options) {
   observe(data)
 
   this.$compile = new Compile(options.el || document.body, this)
+
+  // 生命周期mounted
+  options.mounted.call(this)
 }
 
 MVVM.prototype = {
+  // 类似vue中的Vue.$watch
+  $watch: function (key, cb, options) {
+    new Watcher(this, key, cb)
+  },
+
   _proxy: function (key) {
     var me = this
     Object.defineProperty(me, key, {
