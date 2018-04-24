@@ -103,6 +103,8 @@
 * [vue.js][28]
 * [vue-router 2][29]
 * [vuex][30]
+* [nuxt][36]
+* [nuxt基本用法介绍][37]
 
 ### 12.node.js
 
@@ -181,3 +183,5 @@
   [33]: https://book.douban.com/subject/25863515/
   [34]: https://book.douban.com/subject/26462816/
   [35]: http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000
+  [36]: https://zh.nuxtjs.org/guide
+  [37]: https://github.com/xxxgitone/learningProcess/blob/master/nuxt/nuxt.md
