@@ -119,6 +119,7 @@
 #### 文章
 
 * [Git常用操作及命令](https://xxxgitone.github.io/2017/05/25/Git%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%8F%8A%E5%91%BD%E4%BB%A4/)
+* [如何配置多个ssh](https://github.com/xxxgitone/learningProcess/blob/master/Git/%E9%85%8D%E7%BD%AE%E5%A4%9A%E4%B8%AAssh.md)
 
 #### 书籍
 
