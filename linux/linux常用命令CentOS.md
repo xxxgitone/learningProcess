@@ -140,6 +140,133 @@
 
 * 设置密码：`passwd username`
 
+### 防火墙设置
 
+* 安装：`yum install firewalld(centOS7默认安装)`
+
+  * 确认已经安装`yum list | grep firewall`
+
+  * 确认服务已经启动`ps -ef | grep firewall`
+
+* 启动：`service firewalld start`
+
+* 检查状态：`service firewalld status`
+
+* 关闭或禁用防火墙：`service firewalld stop/disable`
+
+* 安装好后，防火墙会提供一个命令`firewall-cmd`
+
+  * 版本：`firewall-cmd --version`
+
+  * 状态：`firewall-cmd --state`
+
+  * 区域：`firewall-cmd --get-zones`
+
+  * 默认区域：`firewall-cmd --get-default-zone`
+
+  * 所有区域：`firewall-cmd --list-all-zone`
+
+### 提权和文件上传下载操作
+
+* 提权：`sudo`
+
+  * `visudo`: 让用户可以执行sudo命令,`visudo`命令，添加`%username ALL=(ALL)       ALL`
+
+* 文件下载：`wget、curl`
+
+* 文件上传到服务器`scp`
+
+  * 上传：`scp filename username@ip:/your/path`
+  * 下载：`scp username@ip:/your/path/filename ./`
+
+### WebServer之Nginx
+
+#### 基本操作
+
+* 安装：`yum install -y nginx`
+
+  * `centOS7`需要先添加`nginx`到`yum`源：`sudo rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm`
+
+* 启动：`service nginx start`
+
+* 停止：`service nginx stop`
+
+* 重载：`service nginx reload`
+
+  * 安装并且启动`nginx`服务后，可以通过主机ip访问，默认访问80端口，可以看到`welcome to nginx!`页面(如果访问不到，先关闭防火墙)
+
+#### 访问静态资源(实现域名`www.xujiang.com`访问服务器www目录下的index.html文件)
+
+* 关闭防火墙：`sudo service firewalld stop`
+
+* 新建文件并写入内容`sudo mkdir /data/www`,`sudo vim /data/www/index.html`
+
+* 添加配置文件`cd /etc/nginx/conf.d`,`sudo vim xujiang.conf`
+
+  ```shell
+  server {
+          # 可以配置多端口
+          listen  80;
+          # 可以配置多域名
+          server_name www.xujiang.com;
+          root /data/www;
+          index index.html index.htm;
+          location / {
+                  # 所有访问.htm路径都转发到index.html
+                  rewrite ^(.*)\.htm$ /index.html;
+          }
+  }
+  ```
+
+* 重启`nginx`服务，`sudo service nginx reload`
+
+* 因为通过自定义域名访问，要修改本地电脑`host`文件,`sudo vim /etc/hosts`,添加`本机ip www.xujiang.com`
+
+* 关闭`SELinux`
+
+  * 查看状态：`getenforce`
+
+  * 临时关闭：`setenforce 0`
+
+  * 永久关闭（需要重启机器）：`sudo vim /etc/selinux/config`,修改为`SELINUX=disabled`
+
+#### 反向代理(表面上访问本台服务器，实际上代理到了其他服务器)
+
+实现通过`www.xujiang.com`代理到`www.xxxuthus.cn`
+
+修改`xujiang.conf`
+
+```shell
+upstream xujiang {
+				# www.xxxuthus.cn对应的服务器ip
+        server 106.14.173.2:80;
+}
+
+server {
+        listen  80;
+        server_name www.xujiang.com;
+        root /data/www;
+        index index.html index.htm;
+        location / {
+                #rewrite ^(.*)\.htm$ /index.html;
+                proxy_set_header Host www.xxxuthus.cn;
+                proxy_pass http://xujiang;
+        }
+}
+```
+
+#### 负载均衡
+
+服务器分流，分发到多个服务器
+
+```shell
+upstream xujiang {
+				# www.xxxuthus.cn对应的服务器ip
+        server 106.14.173.2:80;
+        
+        # 增加多个服务器 
+        server	10.102.75.152:80
+}
+```
 
 
